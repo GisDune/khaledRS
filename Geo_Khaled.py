@@ -417,12 +417,43 @@ div[data-baseweb="slider"] [data-testid="stSliderValue"] {
     }
     
     /* تكييس الشريط الجانبي */
+   [data-testid="stSidebar"] {
+    background: linear-gradient(135deg, rgba(255,228,225,0.9) 0%, rgba(255,248,220,0.9) 100%) !important;
+    border-radius: 15px 0 0 15px;
+    padding: 20px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.5);
+    margin: 10px;
+    right: 0 !important; /* التعديل هنا */
+    left: auto !important; /* التعديل هنا */
+    top: 0 !important;
+    height: 100vh;
+    overflow-y: auto;
+    width: 320px !important;
+    transition: all 0.3s ease; /* إضافة تحريك سلس */
+}
+
+/* إخفاء الشريط الجانبي عند الانكماش */
+[data-testid="stSidebar"][aria-expanded="false"] {
+    transform: translateX(100%);
+}
+
+/* ... (بقية التنسيقات كما هي) ... */
+
+/* تنسيقات متجاوبة للجوال */
+@media (max-width: 768px) {
     [data-testid="stSidebar"] {
-         height: auto;
-        padding: 0 !important;
-        right: 0; /* إضافة هذه الخاصية */
-        left: auto !important; /* إضافة هذه الخاصية */
+        width: 280px !important;
+        border-radius: 15px 0 0 15px;
+        transform: translateX(0);
     }
+    
+    [data-testid="stSidebar"][aria-expanded="false"] {
+        transform: translateX(100%);
+    }
+    
+    /* ... (بقية التنسيقات) ... */
 }
 
 /* شاشات متوسطة الحجم (أجهزة لوحية) */
