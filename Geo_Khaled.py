@@ -92,8 +92,10 @@ h1, h2, h3 {
     margin: 10px;
     left: 0 !important;
     top: 0 !important;
-    height: 95vh;
+    height: 100vh;
     overflow-y: auto;
+    width: 320px !important;
+    
 }
 
 [data-testid="stSidebar"] .sidebar-content {
@@ -350,14 +352,7 @@ div[data-testid="stButton"] button[kind="primary"][data-testid="baseButton-secon
     box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
 }
 
-/* استجابة للجوال */
-@media (max-width: 600px) {
-    div[data-testid="stButton"] > button[kind="primary"] {
-        width: 90vw !important;
-        font-size: 6vw !important;
-        height: 60px !important;
-    }
-}
+
 
 /* تعطيل أي تنسيقات عامة قد تؤثر على الزر */
 div[data-testid="stButton"] button[kid="calculate_indicator"]:first-child {
@@ -367,6 +362,99 @@ div[data-testid="stButton"] button[kid="calculate_indicator"]:first-child {
 div[data-testid="stButton"] button[kid="calculate_indicator"]:first-child:hover {
     all: unset !important;
 }
+#___________________________________________________________
+            
+
+/* يُخفي فقّاعة الرقم التي تظهر تحت منزلق جاما */
+div[data-testid="stThumbValue"] {
+    display: none !important;
+}
+
+/* بعض نسخ Streamlit الأحدث تستخدم بنية مختلفة للـ value bubble */
+div[data-baseweb="slider"] [data-testid="stSliderValue"] {
+    display: none !important;
+}
+
+
+
+
+
+
+
+
+#______________________________________________________
+
+            
+/* تنسيقات متجاوبة للجوال */
+@media (max-width: 768px) {
+    /* تكييس الأعمدة */
+    .st-emotion-cache-1cypcdb, .st-emotion-cache-1y4p8pa {
+        flex-direction: column;
+    }
+    
+    /* تعديل حجم الخريطة */
+    .map-container {
+        height: 300px !important;
+    }
+    
+    /* تكبير الخطوط للجوال */
+    .welcome-title {
+        font-size: 2rem !important;
+    }
+    
+    .welcome-subtitle {
+        font-size: 1.2rem !important;
+    }
+    
+    /* تعديل حجم زر البدء */
+    div[data-testid="stButton"] > button[kind="primary"] {
+        font-size: 2rem !important;
+        width: 90% !important;
+        height: 60px !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+    
+    /* تكييس الشريط الجانبي */
+    [data-testid="stSidebar"] {
+        height: auto;
+        padding: 10px !important;
+    }
+}
+
+/* شاشات متوسطة الحجم (أجهزة لوحية) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .welcome-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .map-container {
+        height: 400px !important;
+    }
+    
+    div[data-testid="stButton"] > button[kind="primary"] {
+        font-size: 3rem !important;
+        width: 70% !important;
+    }
+}
+
+/* تعديلات عامة للاستجابة */
+.stPlotlyChart, .stImage {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* تكبير النصوص في العناصر الرئيسية */
+h1, h2, h3 {
+    font-size: calc(16px + 1vw) !important;
+}
+
+/* تكبير خطوط التسميات */
+.stSelectbox label, .stSlider label, .stDateInput label {
+    font-size: calc(12px + 0.5vw) !important;
+
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -465,26 +553,66 @@ with st.sidebar:
     min_thr = st.number_input("القص الأدنى", value=-0.05, step=0.01, format="%.4f")
     max_thr = st.number_input("القص الأقصى", value=0.05,  step=0.01, format="%.4f")
 
-    gamma = st.slider(
-        "غاما (القيمة الحالية: %.2f)" % st.session_state.get('gamma', 1.0),
-        min_value=0.2, max_value=3.0,
-        value=st.session_state.get('gamma', 1.0),
-        step=0.1, format="%.2f",
-        key='gamma_slider'
-    )
-    st.session_state.gamma = gamma      # تخزين القيمة
+    st.markdown("**غاما**", help="التحكم في تفتيح أو تظليل الألوان")
 
+    # أولًا: أخفاء الأرقام الافتراضية أسفل السلايدر
+    st.markdown("""
+    <style>
+    /* إخفاء قيمة الحد الأدنى التلقائية أسفل السلايدر */
+    .stSlider > div[data-baseweb="slider"] > div > div:first-child > div:first-child {
+        display: none !important;
+    }
+    /* إخفاء قيمة الحد الأقصى التلقائية أسفل السلايدر */
+    .stSlider > div[data-baseweb="slider"] > div > div:last-child > div:first-child {
+        display: none !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    
+
+    # إنشاء 3 أعمدة لعرض الأرقام اليدوية
+    col_left, col_center, col_right = st.columns([1, 6, 1])
+
+    with col_left:
+        # القيمة الصغرى الصحيحة (0.20) على يسار السلايدر
+        st.markdown(
+        "<div dir='ltr' style='text-align: center; margin-top: 12px; font-size: 14px;'>0.20</div>",
+        unsafe_allow_html=True
+    )
+
+    with col_center:
+        # شريط التمرير نفسه
+        gamma = st.slider(
+            "غاما",
+            min_value=0.2,
+            max_value=3.0,
+            value=st.session_state.get('gamma', 1.0),
+            step=0.1,
+            format="%.2f",
+            key='gamma_slider',
+            label_visibility="collapsed"
+        )
+        st.session_state.gamma = gamma
+
+    with col_right:
+        # القيمة العظمى الصحيحة (3.00) على يمين السلايدر
+        st.markdown(
+            "<div style='text-align: center; margin-top: 12px; font-size: 14px;'>3.00</div>",
+            unsafe_allow_html=True
+        )
+
+    
+    
     apply_mask = st.checkbox("🚿 إظهار المياه فقط (MDWI)", value=False, key="mask_toggle")
     log_chl    = st.checkbox("📈 تحويل لوغاريتمي لـ Chl_a", False)
 
-    # شرح الغاما
+    # شرح معدل ليتناسب مع التصميم الجديد
     st.caption("""
     **تفسير القيم:**
-    - **< 1.0:** تفتيح الألوان
-    - **1.0:** متوازن (افتراضي)
-    - **> 1.0:** تظليل الألوان
+    - **أقصى اليسار (3.00):** تظليل الألوان
+    - **الوسط (1.0):** متوازن (افتراضي)
+    - **أقصى اليمين (0.20):** تفتيح الألوان
     """)
-
     # ─── محدد نطاق التاريخ ──────────────────────────────
     st.markdown("📅 **اختر النطاق الزمني**")
 
