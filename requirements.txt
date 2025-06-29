@@ -1,0 +1,10 @@
+streamlit>=1.33
+streamlit-folium>=0.17
+folium>=0.16
+numpy>=1.26
+matplotlib>=3.8
+plotly>=5.20        
+cmocean>=3.0
+sentinelhub>=3.11
+arabic-reshaper>=3.0
+python-bidi>=0.4
