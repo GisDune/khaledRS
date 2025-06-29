@@ -475,6 +475,63 @@ h1, h2, h3 {
 /* تكبير خطوط التسميات */
 .stSelectbox label, .stSlider label, .stDateInput label {
     font-size: calc(12px + 0.5vw) !important;
+    /* ========================================================================= */
+/* ========== بداية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
+/* ========================================================================= */
+
+@media (max-width: 768px) {
+    /* تعديلات العنوان للجوال */
+    .welcome-title {
+        font-size: 1.8rem !important;  /* تصغير حجم الخط */
+        padding: 10px 15px !important;  /* تقليل الهوامش الداخلية */
+        line-height: 1.4;              /* زيادة ارتفاع السطور */
+        text-shadow: 0 1px 2px rgba(255,215,0,0.35); /* ظل أخف */
+        margin-top: 20vh !important;   /* إضافة هامش علوي */
+        max-width: 90%;                /* تحديد عرض أقصى */
+    }
+    
+    /* تعديلات الصورة الخلفية للجوال */
+    .welcome-container {
+        background-position: center center !important; /* توسيط الصورة */
+        background-size: cover !important;             /* تغطية كاملة */
+    }
+    
+    /* تعديلات زر البدء للجوال */
+    div[data-testid="stButton"] > button[kind="primary"] {
+        font-size: 1.8rem !important;   /* تصغير حجم الخط */
+        width: 200px !important;        /* زيادة العرض */
+        height: 60px !important;        /* تقليل الارتفاع */
+        top: 70% !important;            /* تغيير الموضع الرأسي */
+        left: 50% !important;           /* توسيط أفقي */
+        transform: translate(-50%, -50%) !important; /* توسيط دقيق */
+        border-radius: 30px !important; /* زوايا مدورة */
+        animation: pulse 2s infinite;   /* إضافة تأثير النبض */
+    }
+    
+    /* إخفاء التأثيرات المعقدة على الجوال */
+    div[data-testid="stButton"] > button[kind="primary"]:hover {
+        width: 200px !important;        /* الحفاظ على نفس الحجم */
+        height: 60px !important;        /* الحفاظ على نفس الحجم */
+        border-radius: 30px !important; /* نفس الزوايا */
+        animation: pulse 2s infinite !important; /* استمرار النبض */
+        transform: translate(-50%, -50%) !important; /* نفس المركز */
+    }
+    
+    div[data-testid="stButton"] > button[kind="primary"]:hover::after {
+        content: "" !important; /* إزالة أيقونة الأرض */
+    }
+    
+    /* تأثير النبض للزر على الجوال */
+    @keyframes pulse {
+        0% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.05); }
+        100% { transform: translate(-50%, -50%) scale(1); }
+    }
+}
+
+/* ======================================================================= */
+/* ========== نهاية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
+/* ======================================================================= */
 </style>
 """, unsafe_allow_html=True)
 
