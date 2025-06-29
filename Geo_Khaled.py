@@ -418,8 +418,10 @@ div[data-baseweb="slider"] [data-testid="stSliderValue"] {
     
     /* تكييس الشريط الجانبي */
     [data-testid="stSidebar"] {
-        height: auto;
-        padding: 10px !important;
+         height: auto;
+        padding: 0 !important;
+        right: 0; /* إضافة هذه الخاصية */
+        left: auto !important; /* إضافة هذه الخاصية */
     }
 }
 
