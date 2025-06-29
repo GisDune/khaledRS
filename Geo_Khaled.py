@@ -84,18 +84,41 @@ h1, h2, h3 {
 /* تنسيقات للشريط الجانبي (على اليسار) */
 [data-testid="stSidebar"] {
     background: linear-gradient(135deg, rgba(255,228,225,0.9) 0%, rgba(255,248,220,0.9) 100%) !important;
-    border-radius: 15px;
+    border-radius: 15px 0 0 15px;
     padding: 20px !important;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.5);
     margin: 10px;
-    left: 0 !important;
+    right: 0 !important; /* التعديل هنا */
+    left: auto !important; /* التعديل هنا */
     top: 0 !important;
     height: 100vh;
     overflow-y: auto;
     width: 320px !important;
+    transition: all 0.3s ease; /* إضافة تحريك سلس */
+}
+
+/* إخفاء الشريط الجانبي عند الانكماش */
+[data-testid="stSidebar"][aria-expanded="false"] {
+    transform: translateX(100%);
+}
+
+/* ... (بقية التنسيقات كما هي) ... */
+
+/* تنسيقات متجاوبة للجوال */
+@media (max-width: 768px) {
+    [data-testid="stSidebar"] {
+        width: 280px !important;
+        border-radius: 15px 0 0 15px;
+        transform: translateX(0);
+    }
     
+    [data-testid="stSidebar"][aria-expanded="false"] {
+        transform: translateX(100%);
+    }
+    
+    /* ... (بقية التنسيقات) ... */
 }
 
 [data-testid="stSidebar"] .sidebar-content {
@@ -352,19 +375,6 @@ div[data-testid="stButton"] button[kind="primary"][data-testid="baseButton-secon
     box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
 }
 
-
-
-/* تعطيل أي تنسيقات عامة قد تؤثر على الزر */
-div[data-testid="stButton"] button[kid="calculate_indicator"]:first-child {
-    all: unset !important;
-}
-
-div[data-testid="stButton"] button[kid="calculate_indicator"]:first-child:hover {
-    all: unset !important;
-}
-#___________________________________________________________
-            
-
 /* يُخفي فقّاعة الرقم التي تظهر تحت منزلق جاما */
 div[data-testid="stThumbValue"] {
     display: none !important;
@@ -375,16 +385,26 @@ div[data-baseweb="slider"] [data-testid="stSliderValue"] {
     display: none !important;
 }
 
+/* تنسيقات جديدة لتقليل المسافة بين الخريطة والزر */
+.map-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
 
+.map-button-group .stButton>button {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    padding: 12px 24px !important;
+    border-radius: 12px !important;
+}
 
+/* تعديل حجم الخريطة */
+.st-folium {
+    margin-bottom: 0 !important;
+}
 
-
-
-
-
-#______________________________________________________
-
-            
 /* تنسيقات متجاوبة للجوال */
 @media (max-width: 768px) {
     /* تكييس الأعمدة */
@@ -417,43 +437,12 @@ div[data-baseweb="slider"] [data-testid="stSliderValue"] {
     }
     
     /* تكييس الشريط الجانبي */
-   [data-testid="stSidebar"] {
-    background: linear-gradient(135deg, rgba(255,228,225,0.9) 0%, rgba(255,248,220,0.9) 100%) !important;
-    border-radius: 15px 0 0 15px;
-    padding: 20px !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.5);
-    margin: 10px;
-    right: 0 !important; /* التعديل هنا */
-    left: auto !important; /* التعديل هنا */
-    top: 0 !important;
-    height: 100vh;
-    overflow-y: auto;
-    width: 320px !important;
-    transition: all 0.3s ease; /* إضافة تحريك سلس */
-}
-
-/* إخفاء الشريط الجانبي عند الانكماش */
-[data-testid="stSidebar"][aria-expanded="false"] {
-    transform: translateX(100%);
-}
-
-/* ... (بقية التنسيقات كما هي) ... */
-
-/* تنسيقات متجاوبة للجوال */
-@media (max-width: 768px) {
     [data-testid="stSidebar"] {
-        width: 280px !important;
-        border-radius: 15px 0 0 15px;
-        transform: translateX(0);
+        height: auto;
+        padding: 0 !important;
+        right: 0; /* إضافة هذه الخاصية */
+        left: auto !important; /* إضافة هذه الخاصية */
     }
-    
-    [data-testid="stSidebar"][aria-expanded="false"] {
-        transform: translateX(100%);
-    }
-    
-    /* ... (بقية التنسيقات) ... */
 }
 
 /* شاشات متوسطة الحجم (أجهزة لوحية) */
@@ -486,8 +475,6 @@ h1, h2, h3 {
 /* تكبير خطوط التسميات */
 .stSelectbox label, .stSlider label, .stDateInput label {
     font-size: calc(12px + 0.5vw) !important;
-
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -709,12 +696,31 @@ selected_indicator_display_name = st.selectbox(
 
 indicator = next(key for key, value in indicator_display_names.items() if value == selected_indicator_display_name)
 
+# ───────────────────────── Layout (left ↔ right) ───────────────────────────
+left_col, right_col = st.columns([3, 1])
+
 # ─────────────────────────── Folium map widget ─────────────────────────────
-m = folium.Map(location=[23, 30], zoom_start=6, tiles=None)
-folium.TileLayer(tiles=basemap_tiles, attr=basemap_url).add_to(m)
-Draw(draw_options={"rectangle": True},
-        edit_options={"edit": False}).add_to(m)
-aoi = st_folium(m, height=500, width=1000, returned_objects=["all_drawings"])
+with left_col:
+    # حاوية تجميع الخريطة والزر مع تقليل المسافة بينهما
+    st.markdown('<div class="map-button-group">', unsafe_allow_html=True)
+    
+    m = folium.Map(location=[23, 30], zoom_start=6, tiles=None)
+    folium.TileLayer(tiles=basemap_tiles, attr=basemap_url).add_to(m)
+    Draw(draw_options={"rectangle": True},
+            edit_options={"edit": False}).add_to(m)
+    aoi = st_folium(m, height=450, width=None, use_container_width=True,
+                    returned_objects=["all_drawings"])
+    
+    # ───────────────────────────── Calculation Button ───────────────────────────
+    calculate_clicked = st.button(
+        "🧮 احسب المؤشر",
+        key="unique_calculate_button",
+        type="primary",
+        use_container_width=True,
+        help="انقر لحساب المؤشر المحدد"
+    )
+    
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # ───────────────────────────── Evalscripts dict (محدث مع إضافة OSI) ────────────────────────────
 evalscripts = {
@@ -972,18 +978,7 @@ for key, (min_val, max_val) in default_ranges.items():
 # المؤشرات التي تحتاج قناع مياه (محدث مع إضافة OSI)
 water_masked_indicators = ["FAI", "MCI", "Cya", "Turb", "Chl_a", "CDOM", "DOC", "Color", "OSI"]
 
-# ───────────────────────── Layout (left ↔ right) ───────────────────────────
-left_col, right_col = st.columns([3, 1])
-
 # ───────────────────────────── Calculation ─────────────────────────────────
-calculate_clicked = left_col.button(
-    "🧮 احسب المؤشر",
-    key="unique_calculate_button",
-    type="primary",
-    use_container_width=True,
-    help="انقر لحساب المؤشر المحدد"
-)
-
 if calculate_clicked:
     drawings = aoi.get("all_drawings", [])
     if not drawings:
