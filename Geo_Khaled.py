@@ -479,7 +479,7 @@ h1, h2, h3 {
 /* ========== بداية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
 /* ========================================================================= */
 
-@media  (min-width: 369px) and(max-width: 769px) {
+@media (max-width: 769px) {
     /* تعديلات العنوان للجوال */
     .welcome-title {
         font-size: 1rem !important;  /* تصغير حجم الخط */
@@ -499,11 +499,11 @@ h1, h2, h3 {
     /* تعديلات زر البدء للجوال */
     div[data-testid="stButton"] > button[kind="primary"] {
         font-size: 1.8rem !important;   /* تصغير حجم الخط */
-        width: 200px !important;        /* زيادة العرض */
+        width: 150px !important;        /* زيادة العرض */
         height: 60px !important;        /* تقليل الارتفاع */
         top: 70% !important;            /* تغيير الموضع الرأسي */
         left: 50% !important;           /* توسيط أفقي */
-        transform: translate(-50%, -50%) !important; /* توسيط دقيق */
+        transform: translate(-70%, -70%) !important; /* توسيط دقيق */
         border-radius: 30px !important; /* زوايا مدورة */
         animation: pulse 2s infinite;   /* إضافة تأثير النبض */
     }
