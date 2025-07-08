@@ -423,7 +423,7 @@ div[data-baseweb="slider"] [data-testid="stSliderValue"] {
     }
     
     .welcome-subtitle {
-        font-size: 1rem !important;
+        font-size: 1.2rem !important;
     }
     
     /* تعديل حجم زر البدء */
@@ -479,7 +479,7 @@ h1, h2, h3 {
 /* ========== بداية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
 /* ========================================================================= */
 
-@media (max-width: 768px) {
+@media  (min-width: 369px) and(max-width: 769px) {
     /* تعديلات العنوان للجوال */
     .welcome-title {
         font-size: 1rem !important;  /* تصغير حجم الخط */
@@ -526,6 +526,14 @@ h1, h2, h3 {
         0% { transform: translate(-50%, -50%) scale(1); }
         50% { transform: translate(-50%, -50%) scale(1.05); }
         100% { transform: translate(-50%, -50%) scale(1); }
+    }
+    div[data-testid="stVerticalBlock"] div[data-testid="stHorizontalBlock"]
+    div[data-testid="stButton"] button[kind="primary"][data-testid="baseButton-secondary"] {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: flex-end !important;
+        margin-top: -60px !important; 
+
     }
 }
 
