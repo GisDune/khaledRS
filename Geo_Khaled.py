@@ -481,121 +481,53 @@ h1, h2, h3 {
 /* ========================================================================= */
 /* ========== بداية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
 /* ========================================================================= */
-@media only screen and (max-width: 769px) {
-    /* إصلاحات شاملة لواجهة الترحيب على الجوال */
-    .welcome-container {
-        display: flex !important;
-        flex-direction: column !important; /* Arrange children vertically */
-        justify-content: center !important; /* Center content vertically */
-        align-items: center !important; /* Center content horizontally */
-        padding: 10px !important;
-        overflow: auto !important;
-        height: 100vh !important; /* Ensure it takes full viewport height */
-        width: 100vw !important; /* Ensure it takes full viewport width */
-        position: relative !important; /* Ensure children are positioned relative to this container */
-    }
-
-    .welcome-content {
-        order: 1; /* Place content first */
-        width: 90% !important; /* Adjust width for mobile */
-        margin-top: 5vh !important; /* Add some top margin */
-        margin-bottom: 20px !important;
-        padding: 0 5% !important;
-        flex-grow: 1; /* Allow welcome content to take available space */
-        display: flex; /* Make it a flex container to center its own children */
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
+@media (max-width: 768px) {
+    /* تعديلات العنوان للجوال */
     .welcome-title {
-        font-size: 1.5rem !important;
-        padding: 15px !important;
-        line-height: 1.5;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-        margin: 0 auto 30px auto !important;
-        max-width: 95% !important;
-        background: rgba(255, 255, 255, 0.85) !important;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        position: relative !important; /* Keep it relative */
-        z-index: 101 !important;
-        word-wrap: break-word; /* Ensure long words wrap */
+        font-size: 1rem !important;  /* تصغير حجم الخط */
+        padding: 10px 15px !important;  /* تقليل الهوامش الداخلية */
+        line-height: 1.4;              /* زيادة ارتفاع السطور */
+        text-shadow: 0 1px 2px rgba(255,215,0,0.35); /* ظل أخف */
+        margin-top: 20vh !important;   /* إضافة هامش علوي */
+        max-width: 90%;                /* تحديد عرض أقصى */
     }
-
-    /* إصلاح جذري لزر البدء */
-    /* Target the stButton div and its internal button more precisely */
-    div[data-testid="stVerticalBlock"] > div:first-child > div[data-testid="stVerticalBlock"] {
-        order: 2; /* Place button after content */
-        width: 100% !important;
-        position: relative !important; /* Make it relative to its parent container */
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        margin-bottom: 5vh !important; /* Add some bottom margin */
-        display: flex !important;
-        justify-content: center !important;
-        z-index: 10000 !important;
+    
+    /* تعديلات الصورة الخلفية للجوال */
+    .welcome-container {
+        background-position: center center !important; /* توسيط الصورة */
+        background-size: cover !important;             /* تغطية كاملة */
     }
-
+    
+    /* تعديلات زر البدء للجوال */
     div[data-testid="stButton"] > button[kind="primary"] {
-        /* Reset positioning for mobile to be normal flow */
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-
-        width: 200px !important; /* Adjust width for mobile */
-        height: 60px !important; /* Adjust height for mobile */
-        font-size: 1.6rem !important; /* Adjust font size for mobile */
-        border-radius: 30px !important; /* Adjust border radius */
-        z-index: 10001 !important;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.4) !important;
-        border: 3px solid white !important;
-        animation: pulse 2s infinite !important;
-        margin: 0 auto !important; /* Center the button */
-        padding: 0 !important; /* Remove padding that might affect sizing */
-        display: flex !important; /* Use flex to center text inside button */
-        justify-content: center !important;
-        align-items: center !important;
+        font-size: 1.8rem !important;   /* تصغير حجم الخط */
+        width: 200px !important;        /* زيادة العرض */
+        height: 60px !important;        /* تقليل الارتفاع */
+        top: 70% !important;            /* تغيير الموضع الرأسي */
+        left: 50% !important;           /* توسيط أفقي */
+        transform: translate(-50%, -50%) !important; /* توسيط دقيق */
+        border-radius: 30px !important; /* زوايا مدورة */
+        animation: pulse 2s infinite;   /* إضافة تأثير النبض */
     }
-
-    /* تأثير النبض */
+    
+    /* إخفاء التأثيرات المعقدة على الجوال */
+    div[data-testid="stButton"] > button[kind="primary"]:hover {
+        width: 200px !important;        /* الحفاظ على نفس الحجم */
+        height: 60px !important;        /* الحفاظ على نفس الحجم */
+        border-radius: 30px !important; /* نفس الزوايا */
+        animation: pulse 2s infinite !important; /* استمرار النبض */
+        transform: translate(-50%, -50%) !important; /* نفس المركز */
+    }
+    
+    div[data-testid="stButton"] > button[kind="primary"]:hover::after {
+        content: "" !important; /* إزالة أيقونة الأرض */
+    }
+    
+    /* تأثير النبض للزر على الجوال */
     @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.08); }
-        100% { transform: scale(1); }
-    }
-
-    /* إصلاح اتجاه النص */
-    body, .stApp, .welcome-title {
-        direction: rtl !important;
-        text-align: center !important;
-    }
-
-    /* إصلاح مشاكل التمرير */
-    .stApp {
-        overflow-y: auto !important; /* Allow scrolling for the main app if needed */
-        height: 100vh !important;
-    }
-
-    /* حل إضافي لضمان ظهور العناصر */
-    .welcome-container * {
-        max-height: none !important;
-        overflow: visible !important;
-    }
-
-    /* تعديلات خاصة للهواتف ذات الشاشات الطويلة */
-    @media (max-height: 700px) {
-        .welcome-title {
-            font-size: 1.3rem !important;
-            margin-top: 5vh !important;
-            margin-bottom: 15px !important;
-        }
-
-        div[data-testid="stVerticalBlock"] > div:first-child > div[data-testid="stVerticalBlock"] {
-            margin-bottom: 10vh !important;
-        }
+        0% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.05); }
+        100% { transform: translate(-50%, -50%) scale(1); }
     }
 }
 /* ======================================================================= */
