@@ -478,25 +478,36 @@ h1, h2, h3 {
 /* ========================================================================= */
 /* ========== بداية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
 /* ========================================================================= */
+/* ========================================================================= */
+/* ========== بداية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
+/* ========================================================================= */
 @media only screen and (max-width: 769px) {
     /* إصلاحات شاملة لواجهة الترحيب على الجوال */
     .welcome-container {
         display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-        align-items: center !important;
+        flex-direction: column !important; /* Arrange children vertically */
+        justify-content: center !important; /* Center content vertically */
+        align-items: center !important; /* Center content horizontally */
         padding: 10px !important;
         overflow: auto !important;
+        height: 100vh !important; /* Ensure it takes full viewport height */
+        width: 100vw !important; /* Ensure it takes full viewport width */
+        position: relative !important; /* Ensure children are positioned relative to this container */
     }
-    
+
     .welcome-content {
-        order: 1;
-        width: 100% !important;
-        margin-top: 10vh !important;
+        order: 1; /* Place content first */
+        width: 90% !important; /* Adjust width for mobile */
+        margin-top: 5vh !important; /* Add some top margin */
         margin-bottom: 20px !important;
         padding: 0 5% !important;
+        flex-grow: 1; /* Allow welcome content to take available space */
+        display: flex; /* Make it a flex container to center its own children */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-    
+
     .welcome-title {
         font-size: 1.5rem !important;
         padding: 15px !important;
@@ -507,65 +518,73 @@ h1, h2, h3 {
         background: rgba(255, 255, 255, 0.85) !important;
         border-radius: 12px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        position: relative !important;
+        position: relative !important; /* Keep it relative */
         z-index: 101 !important;
+        word-wrap: break-word; /* Ensure long words wrap */
     }
-    
+
     /* إصلاح جذري لزر البدء */
+    /* Target the stButton div and its internal button more precisely */
     div[data-testid="stVerticalBlock"] > div:first-child > div[data-testid="stVerticalBlock"] {
-        order: 2;
+        order: 2; /* Place button after content */
         width: 100% !important;
-        position: relative !important;
+        position: relative !important; /* Make it relative to its parent container */
         top: auto !important;
         left: auto !important;
         transform: none !important;
-        margin-bottom: 15vh !important;
+        margin-bottom: 5vh !important; /* Add some bottom margin */
         display: flex !important;
         justify-content: center !important;
         z-index: 10000 !important;
     }
-    
+
     div[data-testid="stButton"] > button[kind="primary"] {
+        /* Reset positioning for mobile to be normal flow */
         position: relative !important;
         top: auto !important;
         left: auto !important;
         transform: none !important;
-        width: 220px !important;
-        height: 70px !important;
-        font-size: 1.8rem !important;
-        border-radius: 35px !important;
+
+        width: 200px !important; /* Adjust width for mobile */
+        height: 60px !important; /* Adjust height for mobile */
+        font-size: 1.6rem !important; /* Adjust font size for mobile */
+        border-radius: 30px !important; /* Adjust border radius */
         z-index: 10001 !important;
         box-shadow: 0 5px 20px rgba(0,0,0,0.4) !important;
         border: 3px solid white !important;
         animation: pulse 2s infinite !important;
-        margin: 0 auto !important;
+        margin: 0 auto !important; /* Center the button */
+        padding: 0 !important; /* Remove padding that might affect sizing */
+        display: flex !important; /* Use flex to center text inside button */
+        justify-content: center !important;
+        align-items: center !important;
     }
-    
+
     /* تأثير النبض */
     @keyframes pulse {
         0% { transform: scale(1); }
         50% { transform: scale(1.08); }
         100% { transform: scale(1); }
     }
-    
+
     /* إصلاح اتجاه النص */
     body, .stApp, .welcome-title {
         direction: rtl !important;
         text-align: center !important;
     }
-    
+
     /* إصلاح مشاكل التمرير */
     .stApp {
-        overflow: auto !important;
+        overflow-y: auto !important; /* Allow scrolling for the main app if needed */
         height: 100vh !important;
     }
-    
+
     /* حل إضافي لضمان ظهور العناصر */
     .welcome-container * {
         max-height: none !important;
         overflow: visible !important;
     }
-    
+
     /* تعديلات خاصة للهواتف ذات الشاشات الطويلة */
     @media (max-height: 700px) {
         .welcome-title {
@@ -573,11 +592,65 @@ h1, h2, h3 {
             margin-top: 5vh !important;
             margin-bottom: 15px !important;
         }
-        
+
         div[data-testid="stVerticalBlock"] > div:first-child > div[data-testid="stVerticalBlock"] {
             margin-bottom: 10vh !important;
         }
     }
+}
+/* ======================================================================= */
+/* ========== نهاية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
+/* ======================================================================= */
+
+/* General button styles for the welcome button - make sure they are not excessively !important */
+.stButton>button {
+    font-size: 1.2rem; /* Make it more responsive generally */
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    border-radius: 16px 60px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin: 0 auto; /* Center it */
+    display: block; /* Make it a block element to take full width of its container (if no width set) */
+    width: auto; /* Allow it to shrink wrap content if not explicitly set by the parent */
+    max-width: 100%; /* Ensure it doesn't overflow */
+}
+
+/* Remove fixed positioning for the general button style */
+div[data-testid="stButton"] > button[kind="primary"] {
+    /* Remove fixed positioning from general styles */
+    position: relative !important; /* Ensure it behaves normally in document flow */
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    padding-left: 0 !important; /* Reset this specific override */
+    width: 220px !important; /* Set a default width, let mobile override */
+    height: 70px !important; /* Set a default height, let mobile override */
+    font-size: 1.8rem !important; /* Set a default font size, let mobile override */
+    border-radius: 35px !important; /* Set a default border radius, let mobile override */
+}
+
+/* Hover effect for the welcome button - ensure it doesn't override mobile size */
+div[data-testid="stButton"] > button[kind="primary"]:hover {
+    /* Keep hover effects, but ensure they don't break mobile sizing */
+    width: 220px !important; /* Maintain original width on hover if not mobile */
+    height: 70px !important; /* Maintain original height on hover if not mobile */
+    border-radius: 35px !important; /* Maintain original border-radius on hover if not mobile */
+    background: radial-gradient(
+        circle at center,
+        #4CAF50 0%,
+        #388E3C 30%,
+        #2E7D32 70%,
+        #1B5E20 100%
+    ) !important;
+    transform: scale(1.05) !important; /* Slight scale on hover */
+    box-shadow: 0 0 25px rgba(46, 125, 50, 0.6) !important;
+    animation: none !important; /* Disable rotateEarth on hover, if it's causing issues */
+}
+
+div[data-testid="stButton"] > button[kind="primary"]:hover::after {
+    content: "" !important; /* Hide the earth emoji on hover if it's added here */
 }
 
 /* ======================================================================= */
