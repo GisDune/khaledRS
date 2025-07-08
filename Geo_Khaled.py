@@ -479,60 +479,63 @@ h1, h2, h3 {
 /* ========== بداية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
 /* ========================================================================= */
 
-@media (max-width: 769px) {
-    /* إخفاء زر Fork والقوائم غير المرغوبة */
+@media only screen and (max-width: 769px) {
+    /* إخفاء عناصر غير ضرورية */
     .stDeployButton, #MainMenu, footer {
         display: none !important;
     }
 
-    /* تعديلات العنوان للجوال */
+    /* إصلاح حاوية الترحيب */
+    .welcome-container {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background-position: center !important;
+        background-size: cover !important;
+        z-index: 100 !important;
+    }
+
+    /* تحسين عنوان الترحيب */
     .welcome-title {
-        font-size: 1rem !important;  /* حجم خط أكبر للقراءة */
-        padding: 15px 20px !important;
-        line-height: 1.5;              
-        text-shadow: 0 1px 3px rgba(0,0,0,0.3); 
+        font-size: 1.5rem !important;
+        padding: 15px !important;
+        line-height: 1.5;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         margin-top: 15vh !important;
-        max-width: 95%;
+        max-width: 95% !important;
         background: rgba(255, 255, 255, 0.85) !important;
         border-radius: 12px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        position: relative !important;
+        z-index: 101 !important;
     }
-    
-    /* تحسين الصورة الخلفية */
-    .welcome-container {
-        background-position: center center !important;
-        background-size: cover !important;
-        background-attachment: fixed !important;
-    }
-    
-    /* تعديلات زر البدء للجوال */
+
+    /* إصلاح زر البدء - الحل الجذري */
     div[data-testid="stButton"] > button[kind="primary"] {
-        font-size: 1.8rem !important;
-        width: 220px !important;        /* عرض أكبر */
-        height: 70px !important;        /* ارتفاع مناسب */
-        top: 40% !important;            /* موضع رأسي أفضل */
+        position: fixed !important;
+        top: 65% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
-        border-radius: 35px !important;
-        animation: pulse 2s infinite;
-        z-index: 10000 !important;      /* التأكد من ظهوره فوق كل شيء */
-        box-shadow: 0 5px 20px rgba(0,0,0,0.4) !important;
-        border: 3px solid white !important;
-    }
-    
-    /* إصلاح تأثيرات التمرير */
-    div[data-testid="stButton"] > button[kind="primary"]:hover {
         width: 220px !important;
         height: 70px !important;
+        font-size: 1.8rem !important;
+        border-radius: 35px !important;
+        z-index: 10000 !important;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.4) !important;
+        border: 3px solid white !important;
+        animation: pulse 2s infinite !important;
+        display: block !important;
+    }
+
+    /* إصلاح تأثيرات التمرير */
+    div[data-testid="stButton"] > button[kind="primary"]:hover {
         transform: translate(-50%, -50%) scale(1.05) !important;
         animation: pulse 2s infinite !important;
         box-shadow: 0 7px 25px rgba(0,0,0,0.5) !important;
     }
-    
-    div[data-testid="stButton"] > button[kind="primary"]:hover::after {
-        content: "" !important;
-    }
-    
+
     /* تأثير النبض المعدل */
     @keyframes pulse {
         0% { 
@@ -555,14 +558,20 @@ h1, h2, h3 {
         text-align: center !important;
     }
     
-    /* منع التمرير الأفقي */
-    body {
-        overflow-x: hidden !important;
+    /* إصلاح مشاكل التمرير */
+    .stApp {
+        overflow: hidden !important;
     }
     
     /* تحسين المسافات */
     .welcome-content {
         padding: 20px 10px !important;
+    }
+    
+    /* حل إضافي لضمان ظهور الزر */
+    .stButton > button {
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 }
 
