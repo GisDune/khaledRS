@@ -1277,17 +1277,3 @@ with right_col:
                 )
             )
 
-st.markdown("""
-<script>
-// حل جافاسكريبت احتياطي لضمان ظهور زر البدء
-document.addEventListener('DOMContentLoaded', function() {
-    const startButton = document.querySelector('div[data-testid="stButton"] > button[kind="primary"]');
-    if (startButton) {
-        startButton.style.display = 'block';
-        startButton.style.visibility = 'visible';
-        startButton.style.opacity = '1';
-        startButton.style.zIndex = '10000';
-    }
-});
-</script>
-""", unsafe_allow_html=True)
