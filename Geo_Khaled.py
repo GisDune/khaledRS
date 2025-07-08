@@ -487,7 +487,7 @@ h1, h2, h3 {
 
     /* تعديلات العنوان للجوال */
     .welcome-title {
-        font-size: 1.6rem !important;  /* حجم خط أكبر للقراءة */
+        font-size: 1rem !important;  /* حجم خط أكبر للقراءة */
         padding: 15px 20px !important;
         line-height: 1.5;              
         text-shadow: 0 1px 3px rgba(0,0,0,0.3); 
@@ -510,7 +510,7 @@ h1, h2, h3 {
         font-size: 1.8rem !important;
         width: 220px !important;        /* عرض أكبر */
         height: 70px !important;        /* ارتفاع مناسب */
-        top: 65% !important;            /* موضع رأسي أفضل */
+        top: 40% !important;            /* موضع رأسي أفضل */
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
         border-radius: 35px !important;
