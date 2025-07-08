@@ -527,14 +527,7 @@ h1, h2, h3 {
         50% { transform: translate(-50%, -50%) scale(1.05); }
         100% { transform: translate(-50%, -50%) scale(1); }
     }
-    div[data-testid="stVerticalBlock"] div[data-testid="stHorizontalBlock"]
-    div[data-testid="stButton"] button[kind="primary"][data-testid="baseButton-secondary"] {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: flex-end !important;
-        margin-top: -60px !important; 
-
-    }
+  
 }
 
 /* ======================================================================= */
