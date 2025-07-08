@@ -501,9 +501,9 @@ h1, h2, h3 {
         font-size: 1.8rem !important;   /* تصغير حجم الخط */
         width: 150px !important;        /* زيادة العرض */
         height: 60px !important;        /* تقليل الارتفاع */
-        top: 70% !important;            /* تغيير الموضع الرأسي */
+        top: 40% !important;            /* تغيير الموضع الرأسي */
         left: 50% !important;           /* توسيط أفقي */
-        transform: translate(-70%, -70%) !important; /* توسيط دقيق */
+        transform: translate(-50%, -50%) !important; /* توسيط دقيق */
         border-radius: 30px !important; /* زوايا مدورة */
         animation: pulse 2s infinite;   /* إضافة تأثير النبض */
     }
