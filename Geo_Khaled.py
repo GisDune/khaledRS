@@ -186,7 +186,7 @@ ul {
     border: 1px solid rgba(255, 218, 185, 0.5) !important;
 }
 
-/* تنسيقات للألوان الرومانسية */
+/* تنسيقات للألوان  */
 :root {
     --primary-color: #ff9a9e;
     --secondary-color: #fad0c4;
@@ -352,14 +352,14 @@ div[data-testid="stButton"] button[kind="primary"][data-testid="baseButton-secon
     font-size: 1.2rem !important;
     font-weight: bold !important;
     width: 100% !important;
-    margin: 10px 0 !important;
+    margin:10px 0 !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
     display: flex !important;
     justify-content: center !important;
     align-items: flex-end !important;
-    margin-top: -20px !important;  /* تحريك الزر لأعلى */
+    margin-top: -60px !important;  /* تحريك الزر لأعلى */
 }
 
 div[data-testid="stVerticalBlock"] div[data-testid="stHorizontalBlock"]
@@ -423,7 +423,7 @@ div[data-baseweb="slider"] [data-testid="stSliderValue"] {
     }
     
     .welcome-subtitle {
-        font-size: 1.2rem !important;
+        font-size: 1rem !important;
     }
     
     /* تعديل حجم زر البدء */
