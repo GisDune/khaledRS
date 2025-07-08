@@ -480,54 +480,90 @@ h1, h2, h3 {
 /* ========================================================================= */
 
 @media (max-width: 769px) {
+    /* إخفاء زر Fork والقوائم غير المرغوبة */
+    .stDeployButton, #MainMenu, footer {
+        display: none !important;
+    }
+
     /* تعديلات العنوان للجوال */
     .welcome-title {
-        font-size: 1rem !important;  /* تصغير حجم الخط */
-        padding: 10px 15px !important;  /* تقليل الهوامش الداخلية */
-        line-height: 1.4;              /* زيادة ارتفاع السطور */
-        text-shadow: 0 1px 2px rgba(255,215,0,0.35); /* ظل أخف */
-        margin-top: 20vh !important;   /* إضافة هامش علوي */
-        max-width: 90%;                /* تحديد عرض أقصى */
+        font-size: 1.6rem !important;  /* حجم خط أكبر للقراءة */
+        padding: 15px 20px !important;
+        line-height: 1.5;              
+        text-shadow: 0 1px 3px rgba(0,0,0,0.3); 
+        margin-top: 15vh !important;
+        max-width: 95%;
+        background: rgba(255, 255, 255, 0.85) !important;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
     
-    /* تعديلات الصورة الخلفية للجوال */
+    /* تحسين الصورة الخلفية */
     .welcome-container {
-        background-position: center center !important; /* توسيط الصورة */
-        background-size: cover !important;             /* تغطية كاملة */
+        background-position: center center !important;
+        background-size: cover !important;
+        background-attachment: fixed !important;
     }
     
     /* تعديلات زر البدء للجوال */
     div[data-testid="stButton"] > button[kind="primary"] {
-        font-size: 1.8rem !important;   /* تصغير حجم الخط */
-        width: 150px !important;        /* زيادة العرض */
-        height: 60px !important;        /* تقليل الارتفاع */
-        top: 40% !important;            /* تغيير الموضع الرأسي */
-        left: 50% !important;           /* توسيط أفقي */
-        transform: translate(-50%, -50%) !important; /* توسيط دقيق */
-        border-radius: 30px !important; /* زوايا مدورة */
-        animation: pulse 2s infinite;   /* إضافة تأثير النبض */
+        font-size: 1.8rem !important;
+        width: 220px !important;        /* عرض أكبر */
+        height: 70px !important;        /* ارتفاع مناسب */
+        top: 65% !important;            /* موضع رأسي أفضل */
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        border-radius: 35px !important;
+        animation: pulse 2s infinite;
+        z-index: 10000 !important;      /* التأكد من ظهوره فوق كل شيء */
+        box-shadow: 0 5px 20px rgba(0,0,0,0.4) !important;
+        border: 3px solid white !important;
     }
     
-    /* إخفاء التأثيرات المعقدة على الجوال */
+    /* إصلاح تأثيرات التمرير */
     div[data-testid="stButton"] > button[kind="primary"]:hover {
-        width: 200px !important;        /* الحفاظ على نفس الحجم */
-        height: 60px !important;        /* الحفاظ على نفس الحجم */
-        border-radius: 30px !important; /* نفس الزوايا */
-        animation: pulse 2s infinite !important; /* استمرار النبض */
-        transform: translate(-50%, -50%) !important; /* نفس المركز */
+        width: 220px !important;
+        height: 70px !important;
+        transform: translate(-50%, -50%) scale(1.05) !important;
+        animation: pulse 2s infinite !important;
+        box-shadow: 0 7px 25px rgba(0,0,0,0.5) !important;
     }
     
     div[data-testid="stButton"] > button[kind="primary"]:hover::after {
-        content: "" !important; /* إزالة أيقونة الأرض */
+        content: "" !important;
     }
     
-    /* تأثير النبض للزر على الجوال */
+    /* تأثير النبض المعدل */
     @keyframes pulse {
-        0% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -50%) scale(1.05); }
-        100% { transform: translate(-50%, -50%) scale(1); }
+        0% { 
+            transform: translate(-50%, -50%) scale(1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+        50% { 
+            transform: translate(-50%, -50%) scale(1.08);
+            box-shadow: 0 0 30px rgba(46, 125, 50, 0.7);
+        }
+        100% { 
+            transform: translate(-50%, -50%) scale(1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
     }
-  
+
+    /* إصلاح اتجاه النص */
+    body, .stApp, .welcome-title {
+        direction: rtl !important;
+        text-align: center !important;
+    }
+    
+    /* منع التمرير الأفقي */
+    body {
+        overflow-x: hidden !important;
+    }
+    
+    /* تحسين المسافات */
+    .welcome-content {
+        padding: 20px 10px !important;
+    }
 }
 
 /* ======================================================================= */
