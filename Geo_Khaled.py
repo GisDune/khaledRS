@@ -519,6 +519,9 @@ div[data-testid="stButton"] > button[kind="primary"]:hover::after {
 /* ---------------------------------------------------------------------- */
 /* ✅ إعادة تنسيق زر البدء في الشاشات الصغيرة (الجوال) */
 @media (max-width: 768px) {
+     .welcome-container {
+         padding-bottom: 100px !important; /* يكفي لارتفاع الزر + مسافة أمان */
+    }
     div[data-testid="stButton"] > button[kind="primary"] {
         position: fixed !important;
         bottom: 5vh !important;
