@@ -213,12 +213,13 @@ ul {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex;
+    justify-content: flex-start;           /* رفع المحتوى إلى أعلى الحاوية */
     align-items: center;
-    padding: 40px !important;
+    padding: 4vh 20px 20px !important;     /* 4vh من الأعلى + 20px يمين/يسار/أسفل */
     margin: 0 !important;
+    box-sizing: border-box;
+    width: 100%;                           /* يشغل العرض بالكامل */
 }
-
 .st-emotion-cache-1kyxreq {
     padding: 0 !important;
 }
@@ -237,17 +238,21 @@ ul {
     max-width: 100vh !important;
 }
 
+/* --- welcome-title --- */
 .welcome-title{
-    font-size:3.5rem !important;
-    color:#000 !important;
-    padding:15px 30px !important;
-    border-radius:10px !important;
-    text-align:center !important;
-    margin:0 !important;
+    font-size: 3.5rem !important;
+    color: #000 !important;
+    padding: 15px 30px !important;
+    border-radius: 10px !important;
+    text-align: center !important;
+    margin: 0 !important;
     text-shadow: 0 2px 4px rgba(255,215,0,0.35);
+    max-width: 95% !important;   /* كان 80% */
+    width: 95% !important;       /* دعم إضافى لبعض المتصفحات */
 }
 
-.welcome-subtitle {
+/* --- welcome-subtitle --- */
+.welcome-subtitle{
     font-size: 1.8rem !important;
     color: #000 !important;
     background: rgba(255,255,255,0.8) !important;
@@ -255,6 +260,8 @@ ul {
     border-radius: 8px !important;
     text-align: center !important;
     margin-top: 20px !important;
+    max-width: 95% !important;   /* توسعة العرض مثل العنوان */
+    width: 95% !important;
 }
 
 .welcome-btn {
