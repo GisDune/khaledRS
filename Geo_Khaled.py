@@ -104,28 +104,6 @@ h1, h2, h3 {
     transform: translateX(100%);
 }
 
-/* ... (بقية التنسيقات كما هي) ... */
-
-/* تنسيقات متجاوبة للجوال */
-@media (max-width: 768px) {
-    [data-testid="stSidebar"] {
-        width: 280px !important;
-        border-radius: 15px 0 0 15px;
-        transform: translateX(0);
-    }
-    
-    [data-testid="stSidebar"][aria-expanded="false"] {
-        transform: translateX(100%);
-    }
-    
-    /* ... (بقية التنسيقات) ... */
-}
-
-[data-testid="stSidebar"] .sidebar-content {
-    direction: rtl !important;
-    text-align: right !important;
-}
-
 /* تنسيقات لأزرار الستريمليت */
 .stButton>button {
     font-family: 'Arial', 'Tahoma', sans-serif !important;
@@ -186,7 +164,7 @@ ul {
     border: 1px solid rgba(255, 218, 185, 0.5) !important;
 }
 
-/* تنسيقات للألوان  */
+/* تنسيقات للألوان الرومانسية */
 :root {
     --primary-color: #ff9a9e;
     --secondary-color: #fad0c4;
@@ -204,9 +182,13 @@ ul {
     margin: 0 !important;
     padding: 0 !important;
     background: url('https://gisdune.github.io/khaledRS/image.jpg') center/cover no-repeat !important;
+    background-attachment: fixed;        /* تأثير Parallax خفيف على الحواسيب */
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
+    justify-content: center !important; /* توسيط عمودي */
+    align-items: center !important; /* توسيط أفقي */
+    text-align: center !important; /* توسيط النص داخل الحاوية */
+    box-sizing: border-box; /* التأكد من أن التبطين والحواف مشمولة في الحجم الكلي */
 }
 
 .welcome-content {
@@ -220,10 +202,12 @@ ul {
     box-sizing: border-box;
     width: 100%;                           /* يشغل العرض بالكامل */
 }
+
 .st-emotion-cache-1kyxreq {
     padding: 0 !important;
 }
 
+/* تنسيقات الزر العام في التطبيق */
 .stButton>button {
     font-size: 1.2rem !important;
     padding: 12px 24px !important;
@@ -264,6 +248,7 @@ ul {
     width: 95% !important;
 }
 
+
 .welcome-btn {
     font-size: 1.5rem;
     padding: 15px 40px;
@@ -291,12 +276,12 @@ ul {
     margin-bottom:0.2rem;
 }
 
-/* زر البدء في نافذة الترحيب */
+/* زر البدء في نافذة الترحيب (التنسيقات الرئيسية) */
 div[data-testid="stButton"] > button[kind="primary"] {
     background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%) !important;
-    width: 130px !important;
+    width: 200px !important;
     height: 70px !important;
-    font-size: 60px !important;
+    font-size: 80px !important;
     font-weight: bold !important;
     border-radius: 35px !important;
     color: white !important;
@@ -307,17 +292,15 @@ div[data-testid="stButton"] > button[kind="primary"] {
     justify-content: center !important;
     align-items: center !important;
     padding: 0 !important;
-    position: fixed !important;
-    top: 40% !important;
+    position: fixed !important; /* هذا يسمح لنا بتحديد موقعه بدقة */
+    top: 65% !important; /* تم تعديله ليكون أقرب لأسفل الشاشة */
     left: 10% !important;
     transform: translate(-50%, -50%) !important;
     z-index: 9999 !important;
-    padding-left: 15px !important;
     overflow: hidden !important;
     cursor: pointer !important;
+    /* إزالة padding-left: 15px !important; لأنه كان يتسبب في إزاحة طفيفة */
 }
-
-
 
 div[data-testid="stButton"] > button[kind="primary"]:hover {
     width: 100px !important;
@@ -361,14 +344,14 @@ div[data-testid="stButton"] button[kind="primary"][data-testid="baseButton-secon
     font-size: 1.2rem !important;
     font-weight: bold !important;
     width: 100% !important;
-    margin:10px 0 !important;
+    margin: 10px 0 !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
     display: flex !important;
     justify-content: center !important;
     align-items: flex-end !important;
-    margin-top: -10px !important;  /* تحريك الزر لأعلى */
+    margin-top: -20px !important; /* تحريك الزر لأعلى */
 }
 
 div[data-testid="stVerticalBlock"] div[data-testid="stHorizontalBlock"]
@@ -399,7 +382,7 @@ div[data-baseweb="slider"] [data-testid="stSliderValue"] {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .map-button-group .stButton>button {
@@ -414,43 +397,84 @@ div[data-baseweb="slider"] [data-testid="stSliderValue"] {
     margin-bottom: 0 !important;
 }
 
-/* تنسيقات متجاوبة للجوال */
+/* تنسيقات متجاوبة للجوال والشاشات الصغيرة (كتلة واحدة مدمجة) */
 @media (max-width: 768px) {
     /* تكييس الأعمدة */
     .st-emotion-cache-1cypcdb, .st-emotion-cache-1y4p8pa {
         flex-direction: column;
     }
-    
+
     /* تعديل حجم الخريطة */
     .map-container {
         height: 300px !important;
     }
     
-    /* تكبير الخطوط للجوال */
-    .welcome-title {
-        font-size: 2rem !important;
-    }
-    
-    .welcome-subtitle {
-        font-size: 1.2rem !important;
-    }
-    
-    /* تعديل حجم زر البدء */
-    div[data-testid="stButton"] > button[kind="primary"] {
-        font-size: 2rem !important;
-        width: 90% !important;
-        height: 60px !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-    }
-    
     /* تكييس الشريط الجانبي */
     [data-testid="stSidebar"] {
-        height: auto;
-        padding: 0 !important;
-        right: 0; /* إضافة هذه الخاصية */
-        left: auto !important; /* إضافة هذه الخاصية */
+        width: 280px !important;
+        border-radius: 15px 0 0 15px;
+        transform: translateX(0);
+        height: auto; /* السماح للشريط الجانبي بالتكيف مع المحتوى */
+        padding: 10px !important; /* تقليل التبطين في الجوال */
+        right: 0;
+        left: auto !important;
+    }
+    
+    [data-testid="stSidebar"][aria-expanded="false"] {
+        transform: translateX(100%);
+    }
+
+    /* تعديلات العنوان على الجوال */
+    .welcome-title {
+        font-size: 1.4rem !important; /* حجم خط مناسب للجوال */
+        padding: 10px !important; /* تقليل الهوامش الداخلية */
+        line-height: 1.4 !important; /* تحسين ارتفاع السطور */
+        text-shadow: 0 1px 2px rgba(255,215,0,0.35); /* ظل أخف */
+        margin-top: 40vh !important; /* هامش علوي لتموضع أفضل */
+        max-width: 100% !important; /* تحديد عرض أقصى للسماح بالالتفاف */
+        word-wrap: break-word; /* كسر الكلمات الطويلة */
+        white-space: normal; /* السماح بالتفاف النص بشكل طبيعي */
+        box-sizing: border-box; /* تضمين التبطين والحواف */
+        margin-bottom: 20px !important; /* مسافة بين العنوان والزر */
+    }
+
+    .welcome-subtitle {
+        font-size: 1rem !important; /* تصغير حجم الخط الفرعي */
+        padding: 8px 15px !important;
+    }
+
+    /* تعديلات زر البدء على الجوال */
+    div[data-testid="stButton"] > button[kind="primary"] {
+        font-size: 2rem !important; /* حجم خط أكبر للزر */
+        width: 200px !important; /* عرض ثابت للزر */
+        height: 60px !important; /* ارتفاع ثابت للزر */
+        top: 80% !important; /* تغيير الموضع الرأسي للزر */
+        left: 50% !important; /* توسيط أفقي */
+        transform: translate(-50%, -50%) !important; /* توسيط دقيق */
+        border-radius: 30px !important; /* زوايا مدورة */
+        animation: pulse 2s infinite;  /* إضافة تأثير النبض */
+        padding: 0 !important; /* إزالة التبطين الزائد */
+    }
+
+    /* إخفاء التأثيرات المعقدة على الجوال لزر البدء */
+    div[data-testid="stButton"] > button[kind="primary"]:hover {
+        width: 200px !important; /* الحفاظ على نفس الحجم عند التحويم */
+        height: 60px !important;
+        border-radius: 30px !important;
+        animation: pulse 2s infinite !important; /* استمرار النبض */
+        transform: translate(-50%, -50%) !important; /* نفس المركز */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important; /* ظل موحد */
+    }
+
+    div[data-testid="stButton"] > button[kind="primary"]:hover::after {
+        content: "" !important; /* إزالة أيقونة الأرض عند التحويم على الجوال */
+    }
+    
+    /* تأثير النبض للزر على الجوال */
+    @keyframes pulse {
+        0% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.05); }
+        100% { transform: translate(-50%, -50%) scale(1); }
     }
 }
 
@@ -459,7 +483,17 @@ div[data-baseweb="slider"] [data-testid="stSliderValue"] {
     .welcome-title {
         font-size: 2.5rem !important;
     }
+    .welcome-container{
+        /* ❶ اجعل الصورة بالكامل داخل الإطار دون قصّ */
+        background-size: contain !important;   /* بدلاً من cover */
+        /* ❷ اجعلها تتكرر رأسيًّا إذا لازم الأمر حتى لا يظهر فراغ */
+        background-repeat: no-repeat !important;
+        background-position: top center !important;
+    }
+    #_______________________________________________________________________________________________
     
+            
+    #_________________________________________________________________________________________________
     .map-container {
         height: 400px !important;
     }
@@ -484,147 +518,65 @@ h1, h2, h3 {
 /* تكبير خطوط التسميات */
 .stSelectbox label, .stSlider label, .stDateInput label {
     font-size: calc(12px + 0.5vw) !important;
-/* ========================================================================= */
-/* ========== بداية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
-/* ========================================================================= */
-/* ========================================================================= */
-/* ... (بقية التنسيقات) ... */
+}
+            
+            /* ========== الهواتف والأجهزة الصغيرة (≤ 768px) ========== */
+@media (max-width: 768px){
+    .welcome-container{
+        /* 1) ألغِ الخلفيّة السابقة كلّياً ثم عرِّفها من جديد */
+        background: url('https://gisdune.github.io/khaledRS/image.jpg')
+                    top center / contain              /* الحجم = contain */
+                    no-repeat scroll !important;      /* لا قصّ ولا ثبات */
 
-/* ========================================================================= */
-/* ========== تحسينات نافذة الترحيب للشاشات الصغيرة ========== */
-/* ========================================================================= */
-
-@media (max-width: 768px) {
-    /* تعديلات العنوان للجوال */
-    .welcome-title {
-        font-size: 1.2rem !important; /* Adjust font size for readability */
-        padding: 10px !important; /* Reduce padding */
-        line-height: 1.5 !important; /* Improve line spacing */
-        text-align: center !important; /* Ensure text is centered */
-        margin-top: 5vh !important; /* Adjust top margin for better vertical positioning */
-        max-width: 90% !important; /* Limit width to allow wrapping */
-        word-wrap: break-word; /* Ensure long words break and wrap */
-        white-space: normal; /* Allow text to wrap naturally */
-        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        /* 2) استبدل height:100vh بحدّ أدنى كى تسمح للتمرير إن احتجت */
+        height: auto !important;
+        min-height: 100vh !important;  /* تظلّ تغطّى الشاشة كاملة مع إمكانيّة التمدّد */
     }
 
-    /* Keep the welcome container centered and responsive */
-    .welcome-container {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important; /* Center content vertically */
-        align-items: center !important; /* Center content horizontally */
-        text-align: center !important;
-        padding: 20px !important; /* Add some overall padding to the container */
-        box-sizing: border-box;
+    /* إزالة حوافّ Streamlit الافتراضية لتستفيد من عرض الهاتف بالكامل */
+    section.main > div.block-container{
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+}
+/* ========= الهواتف والأجهزة الصغيرة (≤768px) ========= */
+@media (max-width: 772px){
+    .welcome-container{
+        /* ❶ طبقة تدرّج تبدأ شفافة حتى 50% ثم تتلوّن */
+        background:
+            /* يبدأ شفافًا ثم يمرّ بدرجات السماوي ↔ الأخضر */
+            linear-gradient(
+                180deg,
+                transparent 0%,
+                transparent 15%,        /* لا لون على الجزء العلوى من الصورة */
+                rgba(230,249,255,0.85) 25%,
+                rgba(224,248,240,0.82) 35%,
+                rgba(215,246,236,0.80) 45%,
+                rgba(205,244,225,0.78) 55%,
+                rgba(190,240,210,0.75) 65%,
+                rgba(180,235,180,0.73) 75%,
+                rgba(168,227,144,0.70) 85%,
+                rgba(168,227,144,0.90)100%
+            ),
+            /* ❷ الصورة نفسها بحجم contain */
+            url('https://gisdune.github.io/khaledRS/image.jpg')
+            top center / contain no-repeat scroll !important;
+
+        /* إبقاء الحاوية قابلة للتمدد مع المحتوى */
+        height: auto !important;
+        min-height: 100vh !important;
     }
 
-    .welcome-content {
-        justify-content: center; /* Center content within the flex container */
-    }
-
-    /* Adjust the button for small screens */
-    div[data-testid="stButton"] > button[kind="primary"] {
-        top: 75% !important; /* Move button slightly lower */
-        /* Other button styles remain as you had them */
-    }
-    
-    /* تعديلات زر البدء للجوال */
-    div[data-testid="stButton"] > button[kind="primary"] {
-        font-size: 1.8rem !important;   /* تصغير حجم الخط */
-        width: 200px !important;        /* زيادة العرض */
-        height: 60px !important;        /* تقليل الارتفاع */
-        top: 70% !important;            /* تغيير الموضع الرأسي */
-        left: 50% !important;           /* توسيط أفقي */
-        transform: translate(-50%, -50%) !important; /* توسيط دقيق */
-        border-radius: 30px !important; /* زوايا مدورة */
-        animation: pulse 2s infinite;   /* إضافة تأثير النبض */
-    }
-    
-    /* إخفاء التأثيرات المعقدة على الجوال */
-    div[data-testid="stButton"] > button[kind="primary"]:hover {
-        width: 200px !important;        /* الحفاظ على نفس الحجم */
-        height: 60px !important;        /* الحفاظ على نفس الحجم */
-        border-radius: 30px !important; /* نفس الزوايا */
-        animation: pulse 2s infinite !important; /* استمرار النبض */
-        transform: translate(-50%, -50%) !important; /* نفس المركز */
-    }
-    
-    div[data-testid="stButton"] > button[kind="primary"]:hover::after {
-        content: "" !important; /* إزالة أيقونة الأرض */
-    }
-    
-    /* تأثير النبض للزر على الجوال */
-    @keyframes pulse {
-        0% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -50%) scale(1.05); }
-        100% { transform: translate(-50%, -50%) scale(1); }
+    /* إزالة الحوافّ الافتراضية للتوسّع الكامل (اختياري) */
+    section.main > div.block-container{
+        padding: 0 !important;
+        max-width: 100% !important;
     }
 }
 
-/* ======================================================================= */
-/* ========== نهاية تحسينات الشاشات الصغيرة ========== */
-/* ======================================================================= */
 
-/* ======================================================================= */
-/* ========== نهاية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
-/* ======================================================================= */
 
-/* General button styles for the welcome button - make sure they are not excessively !important */
-.stButton>button {
-    font-size: 1.2rem; /* Make it more responsive generally */
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    color: white;
-    border: none;
-    border-radius: 16px 60px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    margin: 0 auto; /* Center it */
-    display: block; /* Make it a block element to take full width of its container (if no width set) */
-    width: auto; /* Allow it to shrink wrap content if not explicitly set by the parent */
-    max-width: 100%; /* Ensure it doesn't overflow */
-}
-
-/* Remove fixed positioning for the general button style */
-div[data-testid="stButton"] > button[kind="primary"] {
-    /* Remove fixed positioning from general styles */
-    position: relative !important; /* Ensure it behaves normally in document flow */
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    padding-left: 0 !important; /* Reset this specific override */
-    width: 220px !important; /* Set a default width, let mobile override */
-    height: 70px !important; /* Set a default height, let mobile override */
-    font-size: 1.8rem !important; /* Set a default font size, let mobile override */
-    border-radius: 35px !important; /* Set a default border radius, let mobile override */
-}
-
-/* Hover effect for the welcome button - ensure it doesn't override mobile size */
-div[data-testid="stButton"] > button[kind="primary"]:hover {
-    /* Keep hover effects, but ensure they don't break mobile sizing */
-    width: 220px !important; /* Maintain original width on hover if not mobile */
-    height: 70px !important; /* Maintain original height on hover if not mobile */
-    border-radius: 35px !important; /* Maintain original border-radius on hover if not mobile */
-    background: radial-gradient(
-        circle at center,
-        #4CAF50 0%,
-        #388E3C 30%,
-        #2E7D32 70%,
-        #1B5E20 100%
-    ) !important;
-    transform: scale(1.05) !important; /* Slight scale on hover */
-    box-shadow: 0 0 25px rgba(46, 125, 50, 0.6) !important;
-    animation: none !important; /* Disable rotateEarth on hover, if it's causing issues */
-}
-
-div[data-testid="stButton"] > button[kind="primary"]:hover::after {
-    content: "" !important; /* Hide the earth emoji on hover if it's added here */
-}
-
-/* ======================================================================= */
-/* ========== نهاية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
-/* ======================================================================= */
-
+            
 </style>
 """, unsafe_allow_html=True)
 
