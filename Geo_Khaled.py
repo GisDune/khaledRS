@@ -579,7 +579,7 @@ div[data-baseweb="slider"]{
   position: relative;
   height: 32px;             /* أقلّ قليلاً من قبل */
 }
-
+#_________________________________________________________________________________________________________________________
 /* شريط التدرّج نفسه – نرفعه لأعلى ليبقى قريبًا من التكات */
 div[data-baseweb="slider"] > div:first-child{
   margin-top: 8px;          /* كان 14px */
@@ -591,12 +591,12 @@ div[data-baseweb="slider"]::after{
   position: absolute;
   left: 5px;               /* يناسب padding الشريط الافتراضى */
   right: 5px;
-  top: 22px;                /* يضع الخطوط ملاصقة أسفل الشريط (يعتمد على سمك الشريط) */
+  top: 10px;                /* يضع الخطوط ملاصقة أسفل الشريط (يعتمد على سمك الشريط) */
   height: 4px;              /* طول التكة */
   background:
       repeating-linear-gradient(
           to right,
-          transparent 0%, transparent 4%,
+          transparent 0%, transparent 2%,
           #888 4%, #888 5%,   /* خط بعرض 1% */
           transparent 5%, transparent 9%
       );
