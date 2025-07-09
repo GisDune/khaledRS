@@ -367,15 +367,7 @@ div[data-testid="stButton"] button[kind="primary"][data-testid="baseButton-secon
     box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
 }
 
-/* يُخفي فقّاعة الرقم التي تظهر تحت منزلق جاما */
-div[data-testid="stThumbValue"] {
-    display: none !important;
-}
 
-/* بعض نسخ Streamlit الأحدث تستخدم بنية مختلفة للـ value bubble */
-div[data-baseweb="slider"] [data-testid="stSliderValue"] {
-    display: none !important;
-}
 
 /* تنسيقات جديدة لتقليل المسافة بين الخريطة والزر */
 .map-button-group {
@@ -678,67 +670,22 @@ with st.sidebar:
     auto_stretch = st.checkbox("قصّ تلقائي (P2–P98)", True)
     min_thr = st.number_input("القص الأدنى", value=-0.05, step=0.01, format="%.4f")
     max_thr = st.number_input("القص الأقصى", value=0.05,  step=0.01, format="%.4f")
-
-    st.markdown("**غاما**", help="التحكم في تفتيح أو تظليل الألوان")
-
-    # أولًا: أخفاء الأرقام الافتراضية أسفل السلايدر
-    st.markdown("""
-    <style>
-    /* إخفاء قيمة الحد الأدنى التلقائية أسفل السلايدر */
-    .stSlider > div[data-baseweb="slider"] > div > div:first-child > div:first-child {
-        display: none !important;
-    }
-    /* إخفاء قيمة الحد الأقصى التلقائية أسفل السلايدر */
-    .stSlider > div[data-baseweb="slider"] > div > div:last-child > div:first-child {
-        display: none !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-    
-
-    # إنشاء 3 أعمدة لعرض الأرقام اليدوية
-    col_left, col_center, col_right = st.columns([1, 6, 1])
-
-    with col_left:
-        # القيمة الصغرى الصحيحة (0.20) على يسار السلايدر
-        st.markdown(
-        "<div dir='ltr' style='text-align: center; margin-top: 12px; font-size: 14px;'>0.20</div>",
-        unsafe_allow_html=True
-    )
-
-    with col_center:
-        # شريط التمرير نفسه
-        gamma = st.slider(
-            "غاما",
-            min_value=0.2,
-            max_value=3.0,
-            value=st.session_state.get('gamma', 1.0),
-            step=0.5,
-            format="%.1f",
-            key='gamma_slider',
-            label_visibility="collapsed"
-        )
-        st.session_state.gamma = gamma
-
-    with col_right:
-        # القيمة العظمى الصحيحة (3.00) على يمين السلايدر
-        st.markdown(
-            "<div style='text-align: center; margin-top: 12px; font-size: 14px;'>3.00</div>",
-            unsafe_allow_html=True
-        )
+    gamma = st.sidebar.slider("Gamma", 0.2, 3.0, 1.0, 0.1)
 
     
-    
-    apply_mask = st.checkbox("🚿 إظهار المياه فقط (MDWI)", value=False, key="mask_toggle")
-    log_chl    = st.checkbox("📈 تحويل لوغاريتمي لـ Chl_a", False)
-
-    # شرح معدل ليتناسب مع التصميم الجديد
+   # شرح معدل ليتناسب مع التصميم الجديد
     st.caption("""
     **تفسير القيم:**
     - **أقصى اليسار (3.00):** تظليل الألوان
     - **الوسط (1.0):** متوازن (افتراضي)
     - **أقصى اليمين (0.20):** تفتيح الألوان
     """)
+    
+    
+    apply_mask = st.checkbox("🚿 إظهار المياه فقط (MDWI)", value=False, key="mask_toggle")
+    log_chl    = st.checkbox("📈 تحويل لوغاريتمي لـ Chl_a", False)
+
+   
     # ─── محدد نطاق التاريخ ──────────────────────────────
     st.markdown("📅 **اختر النطاق الزمني**")
 
