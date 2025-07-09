@@ -565,12 +565,35 @@ h1, h2, h3 {
         max-width: 100% !important;
     }
 }
-/* الحاوية العامة للمنزلق */
-div[data-baseweb="slider"]{
-  position: relative;
-  height: 32px;             /* أقلّ قليلاً من قبل */
+
+/* —————— 1) عزل السلايدر عن RTL عام —————— */
+div[data-baseweb="slider"] {
+  direction: ltr !important;       /* اجعل اتجاهه LTR */
+  text-align: left !important;     /* محاذاته لليسار */
+  position: relative !important;   /* للتموضع الدقيق للـ ::after */
 }
 
+/* —————— 2) إصلاح موضع الدائرة “thumb” —————— */
+div[data-baseweb="slider"] div[role="slider"] {
+  direction: ltr !important;       /* تأكد من أن الدائرة تتبع LTR */
+}
+
+/* —————— 3) إظهار القيمة الرقمية فوق thumb —————— */
+div[data-baseweb="slider"] div[role="slider"]::after {
+  content: attr(aria-valuenow);    /* الرقم الديناميكي */
+  position: absolute;
+  top: -25px;                       /* فوق السلايدر */
+  left: 50%;                       
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 5px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+}
 
 
 
