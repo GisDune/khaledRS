@@ -589,6 +589,27 @@ div[data-testid="stButton"] > button[kind="primary"]:hover::after {
 /* ======================================================================= */
 /* ========== نهاية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
 /* ======================================================================= */
+/* ضعه في آخر ملف الـ CSS (أو في آخر st.markdown) */
+@media (max-width: 768px) {
+    /* 1️⃣ حرّر الزر من الوضع الثابت */
+    div[data-testid="stButton"] > button[kind="primary"] {
+        position: relative !important;   /* كان fixed */
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin: 24px auto !important;    /* يترك مسافة تحت العنوان */
+        display: block !important;       /* وسط الصفحة */
+        width: 80% !important;           /* مناسب للهاتف */
+        height: 56px !important;
+        font-size: 1.1rem !important;
+    }
+
+    /* 2️⃣ أعطِ العنوان مساحة سفلية كي لا يلتصق بالزر */
+    .welcome-content {
+        padding-bottom: 96px !important; /* ≈ ارتفاع الزر + فراغ */
+    }
+}
+
 </style>
 """, unsafe_allow_html=True)
 
