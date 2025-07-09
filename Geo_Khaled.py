@@ -196,18 +196,20 @@ ul {
 
 /* تنسيقات نافذة البداية */
 .welcome-container {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
+    position: relative !important;  /* أو احذف السطر تمامًا */
+    min-height: 100vh !important;   /* بدلاً من height: 100vh */
     width: 100vw !important;
-    height: 100vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
     background: url('https://gisdune.github.io/khaledRS/image.jpg') center/cover no-repeat !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding-top: 5vh !important;
+    padding-left: 5vw !important;
+    padding-right: 5vw !important;
+    box-sizing: border-box !important;
 }
+
 
 .welcome-content {
     flex: 1;
@@ -486,13 +488,16 @@ h1, h2, h3 {
 /* ---------------------------------------------------------------------- */
 @media (max-width: 768px) {
     /* تعديلات العنوان للجوال */
-    .welcome-title {
-        font-size: 1rem !important;  /* تصغير حجم الخط */
-        padding: 10px 15px !important;  /* تقليل الهوامش الداخلية */
-        line-height: 1.4;              /* زيادة ارتفاع السطور */
-        text-shadow: 0 1px 2px rgba(255,215,0,0.35); /* ظل أخف */
-        margin-top: 20vh !important;   /* إضافة هامش علوي */
-        max-width: 90%;                /* تحديد عرض أقصى */
+     .welcome-title {
+        font-size: 1.5rem !important;
+        padding: 10px 15px !important;
+        margin: 10px auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        line-height: 1.6;
+        background: rgba(255,255,255,0.8);
+        box-sizing: border-box;
+        text-align: center;
     }
     
     /* تعديلات الصورة الخلفية للجوال */
@@ -500,12 +505,12 @@ h1, h2, h3 {
         background-position: center center !important; /* توسيط الصورة */
         background-size: cover !important;             /* تغطية كاملة */
     }
-     .welcome-container {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;  /* اجعل المحتوى يبدأ من الأعلى */
-    align-items: center !important;
-    padding-top: 5vh !important; /* هامش علوي بسيط */
+    .welcome-container {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;  /* اجعل المحتوى يبدأ من الأعلى */
+        align-items: center !important;
+        padding-top: 5vh !important; /* هامش علوي بسيط */
   }
 
   .welcome-content {
