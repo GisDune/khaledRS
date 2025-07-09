@@ -596,7 +596,7 @@ div[data-baseweb="slider"]::after{
   background:
       repeating-linear-gradient(
           to right,
-          transparent 0%, transparent 2%,
+          transparent 4%, transparent 4%,
           #888 4%, #888 5%,   /* خط بعرض 1% */
           transparent 5%, transparent 9%
       );
