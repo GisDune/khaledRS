@@ -565,41 +565,13 @@ h1, h2, h3 {
         max-width: 100% !important;
     }
 }
-/* إصلاح كامل لمكون السلايدر وقيمته */
-
-div[data-baseweb="slider"] {
-  direction: ltr !important;
-  text-align: left !important;
-  position: relative !important;
+/* الحاوية العامة للمنزلق */
+div[data-baseweb="slider"]{
+  position: relative;
+  height: 32px;             /* أقلّ قليلاً من قبل */
 }
 
-/* إصلاح الجزء الذي يحتوي على الدائرة والقيمة */
-div[data-baseweb="slider"] > div {
-  direction: ltr !important;
-}
 
-/* إصلاح موضع الدائرة */
-div[data-baseweb="slider"] div[role="slider"] {
-  direction: ltr !important;
-  position: relative !important;
-}
-
-/* عرض القيمة الرقمية فوق الدائرة */
-div[data-baseweb="slider"] div[role="slider"]::after {
-  content: attr(aria-valuenow);
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #333;
-  color: #fff;
-  font-size: 12px;
-  padding: 3px 6px;
-  border-radius: 6px;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 10;
-}
 
 
 
