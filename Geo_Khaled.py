@@ -481,104 +481,100 @@ h1, h2, h3 {
 /* ========== بداية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
 /* ========================================================================= */
 /* ========================================================================= */
-/* ========== بداية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
+/* ... (بقية التنسيقات) ... */
+
 /* ========================================================================= */
-/* ---------------------------------------------------------------------- */
+/* ========== تحسينات نافذة الترحيب للشاشات الصغيرة ========== */
+/* ========================================================================= */
+
 @media (max-width: 768px) {
-    /* تعديلات العنوان للجوال */
-     .welcome-title {
-        font-size: 1.5rem !important;
-        padding: 10px 15px !important;
-        margin: 10px auto !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        line-height: 1.6;
-        background: rgba(255,255,255,0.8);
-        box-sizing: border-box;
-        text-align: center;
-    }
-    
-    /* تعديلات الصورة الخلفية للجوال */
+    /* إعادة ضبط تنسيقات الحاوية الرئيسية */
     .welcome-container {
-        background-position: center center !important; /* توسيط الصورة */
-        background-size: cover !important;             /* تغطية كاملة */
-    }
-    .welcome-container {
+        position: relative !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 20px !important;
+        background-position: center center !important;
+        background-size: cover !important;
         display: flex !important;
         flex-direction: column !important;
-        justify-content: flex-start !important;  /* اجعل المحتوى يبدأ من الأعلى */
-        align-items: center !important;
-        padding-top: 5vh !important; /* هامش علوي بسيط */
-  }
-
-  .welcome-content {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 16px !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-  }
-
-  .welcome-title {
-    font-size: 1.5rem !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    text-align: center !important;
-    padding: 10px 12px !important;
-    background: rgba(255,255,255,0.85) !important;
-    border-radius: 10px;
-    margin-top: 30px !important;
-    box-sizing: border-box !important;
-    line-height: 1.6;
-  }
-
-  .welcome-subtitle {
-    width: 100% !important;
-    max-width: 100% !important;
-    font-size: 1.2rem !important;
-    text-align: center !important;
-    padding: 10px !important;
-    border-radius: 8px !important;
-    background: rgba(255, 255, 255, 0.7) !important;
-    box-sizing: border-box !important;
-  }
+        justify-content: center !important;
+    }
     
-    /* تعديلات زر البدء للجوال */
+    /* إصلاح محتوى الترحيب */
+    .welcome-content {
+        padding: 20px !important;
+        margin: 0 !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* تعديلات العنوان */
+    .welcome-title {
+        font-size: 1.8rem !important;
+        padding: 15px !important;
+        margin: 0 auto 15px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        line-height: 1.4;
+        background: rgba(255, 255, 255, 0.9) !important;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    /* تعديلات الوصف */
+    .welcome-subtitle {
+        font-size: 1.2rem !important;
+        padding: 12px !important;
+        margin: 0 auto 30px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        background: rgba(255, 255, 255, 0.85) !important;
+        border-radius: 8px;
+    }
+    
+    /* إصلاح زر البدء */
     div[data-testid="stButton"] > button[kind="primary"] {
-        font-size: 1.8rem !important;   /* تصغير حجم الخط */
-        width: 200px !important;        /* زيادة العرض */
-        height: 60px !important;        /* تقليل الارتفاع */
-        top: 70% !important;            /* تغيير الموضع الرأسي */
-        left: 50% !important;           /* توسيط أفقي */
-        transform: translate(-50%, -50%) !important; /* توسيط دقيق */
-        border-radius: 30px !important; /* زوايا مدورة */
-        animation: pulse 2s infinite;   /* إضافة تأثير النبض */
-    }
-    
-    /* إخفاء التأثيرات المعقدة على الجوال */
-    div[data-testid="stButton"] > button[kind="primary"]:hover {
-        width: 200px !important;        /* الحفاظ على نفس الحجم */
-        height: 60px !important;        /* الحفاظ على نفس الحجم */
-        border-radius: 30px !important; /* نفس الزوايا */
-        animation: pulse 2s infinite !important; /* استمرار النبض */
-        transform: translate(-50%, -50%) !important; /* نفس المركز */
-    }
-    
-    div[data-testid="stButton"] > button[kind="primary"]:hover::after {
-        content: "" !important; /* إزالة أيقونة الأرض */
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin: 20px auto !important;
+        width: 80% !important;
+        max-width: 300px !important;
+        height: auto !important;
+        padding: 15px 25px !important;
+        font-size: 1.8rem !important;
+        border-radius: 50px !important;
+        display: block !important;
+        animation: pulse 2s infinite;
     }
     
     /* تأثير النبض للزر على الجوال */
     @keyframes pulse {
-        0% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -50%) scale(1.05); }
-        100% { transform: translate(-50%, -50%) scale(1); }
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    div[data-testid="stButton"] > button[kind="primary"]:hover {
+        width: 80% !important;
+        max-width: 300px !important;
+        border-radius: 50px !important;
+        animation: pulse 2s infinite !important;
+        transform: none !important;
+    }
+    
+    div[data-testid="stButton"] > button[kind="primary"]:hover::after {
+        content: "" !important;
     }
 }
 
+/* ======================================================================= */
+/* ========== نهاية تحسينات الشاشات الصغيرة ========== */
+/* ======================================================================= */
 
 /* ======================================================================= */
 /* ========== نهاية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
