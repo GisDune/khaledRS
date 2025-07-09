@@ -579,7 +579,6 @@ h1, h2, h3 {
             
 </style>
 """, unsafe_allow_html=True)
-
 # ──────────────────────── إعدادات الجلسة ───────────────────────
 for k, v in [("img", None), ("label", ""), ("mdwi", None),
                 ("bbox", None), ("size", None), ("scene_date", ""),
