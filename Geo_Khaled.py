@@ -565,6 +565,20 @@ h1, h2, h3 {
         max-width: 100% !important;
     }
 }
+div[data-baseweb="slider"] > div > div > div[role="slider"]::after {
+  content: attr(aria-valuenow);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
 
 
 #_________________________________________________________________________________________________________________________
