@@ -574,7 +574,34 @@ h1, h2, h3 {
     }
 }
 
+/* الحاوية العامة للمنزلق */
+div[data-baseweb="slider"]{
+  position: relative;
+  height: 32px;             /* أقلّ قليلاً من قبل */
+}
 
+/* شريط التدرّج نفسه – نرفعه لأعلى ليبقى قريبًا من التكات */
+div[data-baseweb="slider"] > div:first-child{
+  margin-top: 8px;          /* كان 14px */
+}
+
+/* التكات: خط رفيع كل 5% من الطول */
+div[data-baseweb="slider"]::after{
+  content: "";
+  position: absolute;
+  left: 5px;               /* يناسب padding الشريط الافتراضى */
+  right: 5px;
+  top: 22px;                /* يضع الخطوط ملاصقة أسفل الشريط (يعتمد على سمك الشريط) */
+  height: 4px;              /* طول التكة */
+  background:
+      repeating-linear-gradient(
+          to right,
+          transparent 0%, transparent 4%,
+          #888 4%, #888 5%,   /* خط بعرض 1% */
+          transparent 5%, transparent 9%
+      );
+  pointer-events: none;
+}
 
             
 </style>
@@ -708,7 +735,7 @@ with st.sidebar:
             min_value=0.2,
             max_value=3.0,
             value=st.session_state.get('gamma', 1.0),
-            step=0.1,
+            step=0.01,
             format="%.2f",
             key='gamma_slider',
             label_visibility="collapsed"
