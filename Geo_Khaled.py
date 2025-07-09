@@ -287,9 +287,7 @@ ul {
 /* زر البدء في نافذة الترحيب */
 div[data-testid="stButton"] > button[kind="primary"] {
     background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%) !important;
-    width: 130px !important;
-    height: 70px !important;
-    font-size: 60px !important;
+    font-size: 2rem !important;
     font-weight: bold !important;
     border-radius: 35px !important;
     color: white !important;
@@ -299,16 +297,17 @@ div[data-testid="stButton"] > button[kind="primary"] {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 0 !important;
-    position: fixed !important;
-    top: 40% !important;
-    left: 10% !important;
-    transform: translate(-50%, -50%) !important;
-    z-index: 9999 !important;
-    padding-left: 15px !important;
-    overflow: hidden !important;
     cursor: pointer !important;
+    padding: 0.5rem 1rem !important;
+    position: relative !important;  /* ← أهم تعديل: إلغاء التثبيت */
+    width: auto !important;
+    height: auto !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    z-index: 10 !important;
 }
+
 
 div[data-testid="stButton"] > button[kind="primary"]:hover {
     width: 100px !important;
@@ -498,22 +497,21 @@ h1, h2, h3 {
         background-position: center center !important;
         background-size: cover !important;
         padding-bottom: 100px !important;  /* <<< هذا هو التعديل الأهم */
+
     }
 
-    /* زر البدء - وضعه أسفل الشاشة */
-    div[data-testid="stButton"] > button[kind="primary"] {
-        font-size: 1.8rem !important;
-        width: 200px !important;
-        height: 60px !important;
-        bottom: 5vh !important;
-        top: auto !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        position: fixed !important;
-        border-radius: 30px !important;
-        animation: pulse 2s infinite;
-        z-index: 9999 !important;
-    }
+   /* تنسيق زر البدء للموبايل */
+div[data-testid="stButton"] > button[kind="primary"] {
+    position: fixed !important;
+    bottom: 5vh !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 90% !important;
+    height: 60px !important;
+    font-size: 1.6rem !important;
+    border-radius: 30px !important;
+    padding: 0 !important;
+}
 
     /* إزالة التأثيرات المعقدة */
     div[data-testid="stButton"] > button[kind="primary"]:hover {
