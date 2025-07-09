@@ -500,17 +500,20 @@ h1, h2, h3 {
     }
     
     /* تعديلات زر البدء للجوال */
-    div[data-testid="stButton"] > button[kind="primary"] {
-        font-size: 1.8rem !important;   /* تصغير حجم الخط */
-        width: 200px !important;        /* زيادة العرض */
-        height: 60px !important;        /* تقليل الارتفاع */
-        top: 70% !important;            /* تغيير الموضع الرأسي */
-        left: 50% !important;           /* توسيط أفقي */
-        transform: translate(-50%, -50%) !important; /* توسيط دقيق */
-        border-radius: 30px !important; /* زوايا مدورة */
-        animation: pulse 2s infinite;   /* إضافة تأثير النبض */
-        
-    }
+   /* زر البدء - تعديل لموضعه أسفل الصفحة بدون تغطية النص */
+div[data-testid="stButton"] > button[kind="primary"] {
+    font-size: 1.8rem !important;
+    width: 200px !important;
+    height: 60px !important;
+    bottom: 5vh !important;              /* ✅ موضعه دائمًا أسفل */
+    top: auto !important;               /* ✅ إلغاء الـ top */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    position: fixed !important;
+    border-radius: 30px !important;
+    animation: pulse 2s infinite;
+}
+
     
     /* إخفاء التأثيرات المعقدة على الجوال */
     div[data-testid="stButton"] > button[kind="primary"]:hover {
