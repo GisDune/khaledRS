@@ -481,60 +481,77 @@ h1, h2, h3 {
 /* ========================================================================= */
 /* ========== بداية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
 /* ========================================================================= */
-@media (max-width: 768px) {
-    /* تعديلات العنوان للجوال */
-    .welcome-title {
-        font-size: 1rem !important;  /* تصغير حجم الخط */
-        padding: 10px 15px !important;  /* تقليل الهوامش الداخلية */
-        line-height: 1.4;              /* زيادة ارتفاع السطور */
-        text-shadow: 0 1px 2px rgba(255,215,0,0.35); /* ظل أخف */
-        margin-top: 20vh !important;   /* إضافة هامش علوي */
-        max-width: 95%;                /* تحديد عرض أقصى */
-    }
-    
-    /* تعديلات الصورة الخلفية للجوال */
-    .welcome-container {
-        background-position: center center !important; /* توسيط الصورة */
-        background-size: cover !important;             /* تغطية كاملة */
-        padding-bottom: 96px !important; /* ≈ ارتفاع الزر + فراغ */
-    }
-    
-    /* تعديلات زر البدء للجوال */
-   /* زر البدء - تعديل لموضعه أسفل الصفحة بدون تغطية النص */
+/* ---------------------------------------------------------------------- */
+/* تنسيقات عامة لزر البدء (تنطبق على كل الشاشات) */
 div[data-testid="stButton"] > button[kind="primary"] {
+    position: relative !important;     /* سلوك افتراضي */
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    padding-left: 0 !important;
+    width: 220px !important;
+    height: 70px !important;
     font-size: 1.8rem !important;
-    width: 200px !important;
-    height: 60px !important;
-    bottom: 5vh !important;              /* ✅ موضعه دائمًا أسفل */
-    top: auto !important;               /* ✅ إلغاء الـ top */
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    position: fixed !important;
-    border-radius: 30px !important;
-    animation: pulse 2s infinite;
+    border-radius: 35px !important;
 }
 
-    
-    /* إخفاء التأثيرات المعقدة على الجوال */
+/* تأثير Hover العام */
+div[data-testid="stButton"] > button[kind="primary"]:hover {
+    width: 220px !important;
+    height: 70px !important;
+    border-radius: 35px !important;
+    background: radial-gradient(
+        circle at center,
+        #4CAF50 0%,
+        #388E3C 30%,
+        #2E7D32 70%,
+        #1B5E20 100%
+    ) !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 25px rgba(46, 125, 50, 0.6) !important;
+    animation: none !important;
+}
+
+div[data-testid="stButton"] > button[kind="primary"]:hover::after {
+    content: "" !important;
+}
+
+/* ---------------------------------------------------------------------- */
+/* ✅ إعادة تنسيق زر البدء في الشاشات الصغيرة (الجوال) */
+@media (max-width: 768px) {
+    div[data-testid="stButton"] > button[kind="primary"] {
+        position: fixed !important;
+        bottom: 5vh !important;
+        top: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 200px !important;
+        height: 60px !important;
+        font-size: 1.6rem !important;
+        z-index: 9999 !important;
+        border-radius: 30px !important;
+        animation: pulse 2s infinite;
+    }
+
     div[data-testid="stButton"] > button[kind="primary"]:hover {
-        width: 200px !important;        /* الحفاظ على نفس الحجم */
-        height: 60px !important;        /* الحفاظ على نفس الحجم */
-        border-radius: 30px !important; /* نفس الزوايا */
-        animation: pulse 2s infinite !important; /* استمرار النبض */
-        transform: translate(-50%, -50%) !important; /* نفس المركز */
+        width: 200px !important;
+        height: 60px !important;
+        border-radius: 30px !important;
+        transform: translate(-50%, -50%) !important;
+        animation: pulse 2s infinite !important;
     }
-    
+
     div[data-testid="stButton"] > button[kind="primary"]:hover::after {
-        content: "" !important; /* إزالة أيقونة الأرض */
+        content: "" !important;
     }
-    
-    /* تأثير النبض للزر على الجوال */
+
     @keyframes pulse {
         0% { transform: translate(-50%, -50%) scale(1); }
         50% { transform: translate(-50%, -50%) scale(1.05); }
         100% { transform: translate(-50%, -50%) scale(1); }
     }
 }
+
 /* ======================================================================= */
 /* ========== نهاية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
 /* ======================================================================= */
