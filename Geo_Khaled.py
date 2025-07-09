@@ -300,7 +300,7 @@ div[data-testid="stButton"] > button[kind="primary"] {
     justify-content: center !important;
     align-items: center !important;
     padding: 0 !important;
-    position: fixed !important;
+    position: relative !important;
     top: 40% !important;
     left: 10% !important;
     transform: translate(-50%, -50%) !important;
@@ -359,7 +359,7 @@ div[data-testid="stButton"] button[kind="primary"][data-testid="baseButton-secon
     display: flex !important;
     justify-content: center !important;
     align-items: flex-end !important;
-    margin-top: -60px !important;  /* تحريك الزر لأعلى */
+    margin-top: -20px !important;  /* تحريك الزر لأعلى */
 }
 
 div[data-testid="stVerticalBlock"] div[data-testid="stHorizontalBlock"]
@@ -489,13 +489,14 @@ h1, h2, h3 {
         line-height: 1.4;              /* زيادة ارتفاع السطور */
         text-shadow: 0 1px 2px rgba(255,215,0,0.35); /* ظل أخف */
         margin-top: 20vh !important;   /* إضافة هامش علوي */
-        max-width: 90%;                /* تحديد عرض أقصى */
+        max-width: 95%;                /* تحديد عرض أقصى */
     }
     
     /* تعديلات الصورة الخلفية للجوال */
     .welcome-container {
         background-position: center center !important; /* توسيط الصورة */
         background-size: cover !important;             /* تغطية كاملة */
+        padding-bottom: 96px !important; /* ≈ ارتفاع الزر + فراغ */
     }
     
     /* تعديلات زر البدء للجوال */
@@ -589,26 +590,6 @@ div[data-testid="stButton"] > button[kind="primary"]:hover::after {
 /* ======================================================================= */
 /* ========== نهاية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
 /* ======================================================================= */
-/* ضعه في آخر ملف الـ CSS (أو في آخر st.markdown) */
-@media (max-width: 768px) {
-    /* 1️⃣ حرّر الزر من الوضع الثابت */
-    div[data-testid="stButton"] > button[kind="primary"] {
-        position: relative !important;   /* كان fixed */
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        margin: 24px auto !important;    /* يترك مسافة تحت العنوان */
-        display: block !important;       /* وسط الصفحة */
-        width: 80% !important;           /* مناسب للهاتف */
-        height: 56px !important;
-        font-size: 1.1rem !important;
-    }
-
-    /* 2️⃣ أعطِ العنوان مساحة سفلية كي لا يلتصق بالزر */
-    .welcome-content {
-        padding-bottom: 96px !important; /* ≈ ارتفاع الزر + فراغ */
-    }
-}
 
 </style>
 """, unsafe_allow_html=True)
