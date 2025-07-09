@@ -196,20 +196,18 @@ ul {
 
 /* تنسيقات نافذة البداية */
 .welcome-container {
-    position: relative !important;  /* أو احذف السطر تمامًا */
-    min-height: 100vh !important;   /* بدلاً من height: 100vh */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
     width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
     background: url('https://gisdune.github.io/khaledRS/image.jpg') center/cover no-repeat !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: flex-start !important;
-    align-items: center !important;
-    padding-top: 5vh !important;
-    padding-left: 5vw !important;
-    padding-right: 5vw !important;
-    box-sizing: border-box !important;
+    justify-content: space-between !important;
 }
-
 
 .welcome-content {
     flex: 1;
@@ -516,26 +514,25 @@ h1, h2, h3 {
   .welcome-content {
     width: 100% !important;
     max-width: 100% !important;
-    padding: 0 15px !important;
-    margin: 0 auto !important;
+    padding: 0 16px !important;
     box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
+    justify-content: flex-start !important;
   }
 
   .welcome-title {
+    font-size: 1.5rem !important;
     width: 100% !important;
     max-width: 100% !important;
-    font-size: 2rem !important;
     text-align: center !important;
-    background: rgba(255, 255, 255, 0.8) !important;
-    padding: 12px !important;
-    margin-top: 0 !important;
-    margin-bottom: 10px !important;
-    border-radius: 10px !important;
+    padding: 10px 12px !important;
+    background: rgba(255,255,255,0.85) !important;
+    border-radius: 10px;
+    margin-top: 30px !important;
     box-sizing: border-box !important;
-    line-height: 1.5 !important;
+    line-height: 1.6;
   }
 
   .welcome-subtitle {
