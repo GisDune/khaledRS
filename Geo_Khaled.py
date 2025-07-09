@@ -500,25 +500,49 @@ h1, h2, h3 {
         background-position: center center !important; /* توسيط الصورة */
         background-size: cover !important;             /* تغطية كاملة */
     }
-    .welcome-content {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 20px !important;
-        margin: 0 auto !important;
-        text-align: center !important;
-        box-sizing: border-box !important;
-    }
+     .welcome-container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;  /* اجعل المحتوى يبدأ من الأعلى */
+    align-items: center !important;
+    padding-top: 5vh !important; /* هامش علوي بسيط */
+  }
 
-    .welcome-title {
-        font-size: 1.8rem !important;
-        line-height: 1.4 !important;
-    }
+  .welcome-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 15px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
 
-    .welcome-subtitle {
-        font-size: 1.2rem !important;
-        line-height: 1.4 !important;
-        padding: 10px !important;
-    }
+  .welcome-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 2rem !important;
+    text-align: center !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    padding: 12px !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+    border-radius: 10px !important;
+    box-sizing: border-box !important;
+    line-height: 1.5 !important;
+  }
+
+  .welcome-subtitle {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 1.2rem !important;
+    text-align: center !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    box-sizing: border-box !important;
+  }
     
     /* تعديلات زر البدء للجوال */
     div[data-testid="stButton"] > button[kind="primary"] {
