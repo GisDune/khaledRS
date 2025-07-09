@@ -300,7 +300,7 @@ div[data-testid="stButton"] > button[kind="primary"] {
     justify-content: center !important;
     align-items: center !important;
     padding: 0 !important;
-    position: relative !important;
+    position: fixed !important;
     top: 40% !important;
     left: 10% !important;
     transform: translate(-50%, -50%) !important;
@@ -359,7 +359,7 @@ div[data-testid="stButton"] button[kind="primary"][data-testid="baseButton-secon
     display: flex !important;
     justify-content: center !important;
     align-items: flex-end !important;
-    margin-top: -20px !important;  /* تحريك الزر لأعلى */
+    margin-top: -10px !important;  /* تحريك الزر لأعلى */
 }
 
 div[data-testid="stVerticalBlock"] div[data-testid="stHorizontalBlock"]
@@ -390,7 +390,7 @@ div[data-baseweb="slider"] [data-testid="stSliderValue"] {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .map-button-group .stButton>button {
