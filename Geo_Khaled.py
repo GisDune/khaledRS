@@ -713,7 +713,7 @@ with st.sidebar:
             min_value=0.2,
             max_value=3.0,
             value=st.session_state.get('gamma', 1.0),
-            step=0.05,
+            step=0.5,
             format="%.1f",
             key='gamma_slider',
             label_visibility="collapsed"
