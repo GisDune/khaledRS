@@ -482,76 +482,57 @@ h1, h2, h3 {
 /* ========== بداية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
 /* ========================================================================= */
 /* ---------------------------------------------------------------------- */
-/* تنسيقات عامة لزر البدء (تنطبق على كل الشاشات) */
-div[data-testid="stButton"] > button[kind="primary"] {
-    position: relative !important;     /* سلوك افتراضي */
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    padding-left: 0 !important;
-    width: 220px !important;
-    height: 70px !important;
-    font-size: 1.8rem !important;
-    border-radius: 35px !important;
-}
-
-/* تأثير Hover العام */
-div[data-testid="stButton"] > button[kind="primary"]:hover {
-    width: 220px !important;
-    height: 70px !important;
-    border-radius: 35px !important;
-    background: radial-gradient(
-        circle at center,
-        #4CAF50 0%,
-        #388E3C 30%,
-        #2E7D32 70%,
-        #1B5E20 100%
-    ) !important;
-    transform: scale(1.05) !important;
-    box-shadow: 0 0 25px rgba(46, 125, 50, 0.6) !important;
-    animation: none !important;
-}
-
-div[data-testid="stButton"] > button[kind="primary"]:hover::after {
-    content: "" !important;
-}
-
-/* ---------------------------------------------------------------------- */
-/* ✅ إعادة تنسيق زر البدء في الشاشات الصغيرة (الجوال) */
 @media (max-width: 768px) {
-     .welcome-container {
-         padding-bottom: 100px !important; /* يكفي لارتفاع الزر + مسافة أمان */
+    /* تعديلات العنوان للجوال */
+    .welcome-title {
+        font-size: 1rem !important;
+        padding: 10px 15px !important;
+        line-height: 1.4;
+        text-shadow: 0 1px 2px rgba(255,215,0,0.35);
+        margin-top: 20vh !important;
+        max-width: 95%;
     }
+
+    /* ✅ تعديل حاسم: إضافة فراغ أسفل الصفحة لمنع تغطية الزر للنص */
+    .welcome-container {
+        background-position: center center !important;
+        background-size: cover !important;
+        padding-bottom: 100px !important;  /* <<< هذا هو التعديل الأهم */
+    }
+
+    /* زر البدء - وضعه أسفل الشاشة */
     div[data-testid="stButton"] > button[kind="primary"] {
-        position: fixed !important;
+        font-size: 1.8rem !important;
+        width: 200px !important;
+        height: 60px !important;
         bottom: 5vh !important;
         top: auto !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
-        width: 200px !important;
-        height: 60px !important;
-        font-size: 1.6rem !important;
-        z-index: 9999 !important;
+        position: fixed !important;
         border-radius: 30px !important;
         animation: pulse 2s infinite;
+        z-index: 9999 !important;
     }
 
+    /* إزالة التأثيرات المعقدة */
     div[data-testid="stButton"] > button[kind="primary"]:hover {
         width: 200px !important;
         height: 60px !important;
         border-radius: 30px !important;
-        transform: translate(-50%, -50%) !important;
         animation: pulse 2s infinite !important;
+        transform: translateX(-50%) !important;
     }
 
     div[data-testid="stButton"] > button[kind="primary"]:hover::after {
         content: "" !important;
     }
 
+    /* تأثير النبض */
     @keyframes pulse {
-        0% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -50%) scale(1.05); }
-        100% { transform: translate(-50%, -50%) scale(1); }
+        0%   { transform: translateX(-50%) scale(1); }
+        50%  { transform: translateX(-50%) scale(1.05); }
+        100% { transform: translateX(-50%) scale(1); }
     }
 }
 
