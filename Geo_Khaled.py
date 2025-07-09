@@ -508,8 +508,7 @@ h1, h2, h3 {
         transform: translate(-50%, -50%) !important; /* توسيط دقيق */
         border-radius: 30px !important; /* زوايا مدورة */
         animation: pulse 2s infinite;   /* إضافة تأثير النبض */
-        position: fixed !important;
-          padding-bottom: 120px !important;  /* يمنع الزر من تغطية النص */
+        
     }
     
     /* إخفاء التأثيرات المعقدة على الجوال */
