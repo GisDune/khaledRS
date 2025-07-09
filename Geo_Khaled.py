@@ -500,13 +500,24 @@ h1, h2, h3 {
         background-position: center center !important; /* توسيط الصورة */
         background-size: cover !important;             /* تغطية كاملة */
     }
-     .welcome-content {
-        width: 90vw !important;
-        padding: 20px 10px !important;
+    .welcome-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 20px !important;
         margin: 0 auto !important;
         text-align: center !important;
-        word-wrap: break-word !important;
+        box-sizing: border-box !important;
+    }
+
+    .welcome-title {
+        font-size: 1.8rem !important;
+        line-height: 1.4 !important;
+    }
+
+    .welcome-subtitle {
         font-size: 1.2rem !important;
+        line-height: 1.4 !important;
+        padding: 10px !important;
     }
     
     /* تعديلات زر البدء للجوال */
