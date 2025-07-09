@@ -577,6 +577,11 @@ div[data-baseweb="slider"] > div > div > div[role="slider"]::after {
   padding: 3px 6px;
   border-radius: 6px;
   white-space: nowrap;
+  direction: ltr !important;
+  text-align: left !important;
+  position: relative;
+  height: 32px !important;
+  margin-top: 5px !important;
 }
 
 
