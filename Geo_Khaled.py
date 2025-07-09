@@ -589,10 +589,10 @@ div[data-baseweb="slider"] > div:first-child{
 div[data-baseweb="slider"]::after{
   content: "";
   position: absolute;
-  left: 5px;               /* يناسب padding الشريط الافتراضى */
-  right: 5px;
+  left: 2px;               /* يناسب padding الشريط الافتراضى */
+  right: 2px;
   top: 20px;                /* يضع الخطوط ملاصقة أسفل الشريط (يعتمد على سمك الشريط) */
-  height: 4px;              /* طول التكة */
+  height: 8px;              /* طول التكة */
   background:
       repeating-linear-gradient(
           to right,
