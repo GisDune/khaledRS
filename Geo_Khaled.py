@@ -565,7 +565,27 @@ h1, h2, h3 {
         max-width: 100% !important;
     }
 }
-div[data-baseweb="slider"] > div > div > div[role="slider"]::after {
+/* إصلاح كامل لمكون السلايدر وقيمته */
+
+div[data-baseweb="slider"] {
+  direction: ltr !important;
+  text-align: left !important;
+  position: relative !important;
+}
+
+/* إصلاح الجزء الذي يحتوي على الدائرة والقيمة */
+div[data-baseweb="slider"] > div {
+  direction: ltr !important;
+}
+
+/* إصلاح موضع الدائرة */
+div[data-baseweb="slider"] div[role="slider"] {
+  direction: ltr !important;
+  position: relative !important;
+}
+
+/* عرض القيمة الرقمية فوق الدائرة */
+div[data-baseweb="slider"] div[role="slider"]::after {
   content: attr(aria-valuenow);
   position: absolute;
   top: -30px;
@@ -577,12 +597,10 @@ div[data-baseweb="slider"] > div > div > div[role="slider"]::after {
   padding: 3px 6px;
   border-radius: 6px;
   white-space: nowrap;
-  direction: ltr !important;
-  text-align: left !important;
-  position: relative;
-  height: 32px !important;
-  margin-top: 5px !important;
+  pointer-events: none;
+  z-index: 10;
 }
+
 
 
 
