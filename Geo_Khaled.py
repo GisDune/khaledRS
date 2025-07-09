@@ -591,7 +591,7 @@ div[data-baseweb="slider"]::after{
   position: absolute;
   left: 5px;               /* يناسب padding الشريط الافتراضى */
   right: 5px;
-  top: 10px;                /* يضع الخطوط ملاصقة أسفل الشريط (يعتمد على سمك الشريط) */
+  top: 20px;                /* يضع الخطوط ملاصقة أسفل الشريط (يعتمد على سمك الشريط) */
   height: 4px;              /* طول التكة */
   background:
       repeating-linear-gradient(
@@ -735,8 +735,8 @@ with st.sidebar:
             min_value=0.2,
             max_value=3.0,
             value=st.session_state.get('gamma', 1.0),
-            step=0.01,
-            format="%.2f",
+            step=0.00001,
+            format="%.1f",
             key='gamma_slider',
             label_visibility="collapsed"
         )
