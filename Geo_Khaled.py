@@ -287,7 +287,9 @@ ul {
 /* زر البدء في نافذة الترحيب */
 div[data-testid="stButton"] > button[kind="primary"] {
     background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%) !important;
-    font-size: 2rem !important;
+    width: 130px !important;
+    height: 70px !important;
+    font-size: 60px !important;
     font-weight: bold !important;
     border-radius: 35px !important;
     color: white !important;
@@ -297,16 +299,17 @@ div[data-testid="stButton"] > button[kind="primary"] {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    padding: 0 !important;
+    position: fixed !important;
+    top: 40% !important;
+    left: 10% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
+    padding-left: 15px !important;
+    overflow: hidden !important;
     cursor: pointer !important;
-    padding: 0.5rem 1rem !important;
-    position: relative !important;  /* ← أهم تعديل: إلغاء التثبيت */
-    width: auto !important;
-    height: auto !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-    z-index: 10 !important;
 }
+
 
 
 div[data-testid="stButton"] > button[kind="primary"]:hover {
@@ -484,55 +487,61 @@ h1, h2, h3 {
 @media (max-width: 768px) {
     /* تعديلات العنوان للجوال */
     .welcome-title {
-        font-size: 1rem !important;
-        padding: 10px 15px !important;
-        line-height: 1.4;
-        text-shadow: 0 1px 2px rgba(255,215,0,0.35);
-        margin-top: 20vh !important;
-        max-width: 95%;
+        font-size: 1rem !important;  /* تصغير حجم الخط */
+        padding: 10px 15px !important;  /* تقليل الهوامش الداخلية */
+        line-height: 1.4;              /* زيادة ارتفاع السطور */
+        text-shadow: 0 1px 2px rgba(255,215,0,0.35); /* ظل أخف */
+        margin-top: 20vh !important;   /* إضافة هامش علوي */
+        max-width: 90%;                /* تحديد عرض أقصى */
     }
-
-    /* ✅ تعديل حاسم: إضافة فراغ أسفل الصفحة لمنع تغطية الزر للنص */
+    
+    /* تعديلات الصورة الخلفية للجوال */
     .welcome-container {
-        background-position: center center !important;
-        background-size: cover !important;
-        padding-bottom: 100px !important;  /* <<< هذا هو التعديل الأهم */
-
+        background-position: center center !important; /* توسيط الصورة */
+        background-size: cover !important;             /* تغطية كاملة */
     }
-
-   /* تنسيق زر البدء للموبايل */
-div[data-testid="stButton"] > button[kind="primary"] {
-    position: fixed !important;
-    bottom: 5vh !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 90% !important;
-    height: 60px !important;
-    font-size: 1.6rem !important;
-    border-radius: 30px !important;
-    padding: 0 !important;
-}
-
-    /* إزالة التأثيرات المعقدة */
+     .welcome-content {
+        width: 90vw !important;
+        padding: 20px 10px !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+        word-wrap: break-word !important;
+        font-size: 1.2rem !important;
+    }
+    
+    /* تعديلات زر البدء للجوال */
+    div[data-testid="stButton"] > button[kind="primary"] {
+        font-size: 1.8rem !important;   /* تصغير حجم الخط */
+        width: 200px !important;        /* زيادة العرض */
+        height: 60px !important;        /* تقليل الارتفاع */
+        top: 70% !important;            /* تغيير الموضع الرأسي */
+        left: 50% !important;           /* توسيط أفقي */
+        transform: translate(-50%, -50%) !important; /* توسيط دقيق */
+        border-radius: 30px !important; /* زوايا مدورة */
+        animation: pulse 2s infinite;   /* إضافة تأثير النبض */
+    }
+    
+    /* إخفاء التأثيرات المعقدة على الجوال */
     div[data-testid="stButton"] > button[kind="primary"]:hover {
-        width: 200px !important;
-        height: 60px !important;
-        border-radius: 30px !important;
-        animation: pulse 2s infinite !important;
-        transform: translateX(-50%) !important;
+        width: 200px !important;        /* الحفاظ على نفس الحجم */
+        height: 60px !important;        /* الحفاظ على نفس الحجم */
+        border-radius: 30px !important; /* نفس الزوايا */
+        animation: pulse 2s infinite !important; /* استمرار النبض */
+        transform: translate(-50%, -50%) !important; /* نفس المركز */
     }
-
+    
     div[data-testid="stButton"] > button[kind="primary"]:hover::after {
-        content: "" !important;
+        content: "" !important; /* إزالة أيقونة الأرض */
     }
-
-    /* تأثير النبض */
+    
+    /* تأثير النبض للزر على الجوال */
     @keyframes pulse {
-        0%   { transform: translateX(-50%) scale(1); }
-        50%  { transform: translateX(-50%) scale(1.05); }
-        100% { transform: translateX(-50%) scale(1); }
+        0% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.05); }
+        100% { transform: translate(-50%, -50%) scale(1); }
     }
 }
+
 
 /* ======================================================================= */
 /* ========== نهاية التعديلات الخاصة بالشاشات الصغيرة (نافذة الترحيب فقط) ========== */
