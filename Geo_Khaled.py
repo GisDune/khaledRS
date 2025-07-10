@@ -587,20 +587,10 @@ h1, h2, h3 {
     unicode-bidi: isolate-override !important;
     position: relative !important;
 }
-[data-testid="stSlider"] div[data-baseweb="slider"] div[role="slider"]::after {
-    content: attr(aria-valuenow);
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #333;
-    color: #fff;
-    font-size: 12px;
-    padding: 4px 16px;
-    border-radius: 5px;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 10;
+/* تنسيق مخصص لإظهار الدائرة الصغيرة وقيمة المؤشر */
+div[data-baseweb="slider"] {
+    position: relative;
+    height: 32px;  /* هذا هو ما يسمح بظهور الدائرة الصغيرة فوق الشريط */
 }
 
 
