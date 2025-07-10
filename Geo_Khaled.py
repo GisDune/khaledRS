@@ -538,7 +538,7 @@ h1, h2, h3 {
         linear-gradient(
             to bottom,
             transparent 0%,
-            transparent 5%,
+            transparent 10%,
             rgba(230,249,255,0.05) 15%,
             rgba(230,249,255,0.15) 20%,
             rgba(215,246,236,0.3) 35%,
@@ -568,7 +568,7 @@ h1, h2, h3 {
             to bottom,
             transparent 0%,
             transparent 5%,                   /* ⬅︎ نُقدّم التدرج قليلاً */
-            rgba(230,249,255,0.07) 10%,
+            rgba(230,249,255,0.07) 15%,
             rgba(230,249,255,0.15) 18%,
             rgba(215,246,236,0.3) 30%,
             rgba(180,235,180,0.5) 50%,
