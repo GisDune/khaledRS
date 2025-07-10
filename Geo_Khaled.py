@@ -532,37 +532,53 @@ h1, h2, h3 {
     }
 }
 /* ========= الهواتف والأجهزة الصغيرة (≤768px) ========= */
+/* للشاشات المتوسطة والصغيرة */
 @media (max-width: 772px){
-    .welcome-container{
-        /* ❶ طبقة تدرّج تبدأ شفافة حتى 50% ثم تتلوّن */
-        background:
-            /* يبدأ شفافًا ثم يمرّ بدرجات السماوي ↔ الأخضر */
-            linear-gradient(
-                180deg,
-                transparent 0%,
-                transparent 3%,        /* لا لون على الجزء العلوى من الصورة */
-                rgba(230,249,255,0.85) 30%,
-                rgba(224,248,240,0.82) 35%,
-                rgba(215,246,236,0.80) 45%,
-                rgba(205,244,225,0.78) 55%,
-                rgba(190,240,210,0.75) 65%,
-                rgba(180,235,180,0.73) 75%,
-                rgba(168,227,144,0.70) 85%,
-                rgba(168,227,144,0.90)100%
-            ),
-            /* ❷ الصورة نفسها بحجم contain */
-            url('https://gisdune.github.io/khaledRS/image.jpg')
-            top center / contain no-repeat scroll !important;
+.welcome-container {
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 10%,
+            rgba(230,249,255,0.05) 12%,
+            rgba(230,249,255,0.15) 20%,
+            rgba(215,246,236,0.3) 35%,
+            rgba(180,235,180,0.5) 55%,
+            rgba(168,227,144,0.7) 75%,
+            rgba(168,227,144,0.85) 90%,
+            rgba(168,227,144,0.95) 100%
+        ),
+        url('https://gisdune.github.io/khaledRS/image.jpg')
+        top center / contain no-repeat scroll !important;
 
-        /* إبقاء الحاوية قابلة للتمدد مع المحتوى */
-        height: auto !important;
         min-height: 100vh !important;
+        height: auto !important;
     }
 
-    /* إزالة الحوافّ الافتراضية للتوسّع الكامل (اختياري) */
-    section.main > div.block-container{
+    section.main > div.block-container {
         padding: 0 !important;
         max-width: 100% !important;
+    }
+}
+
+/* للشاشات الصغيرة جداً مثل 322px */
+@media (max-width: 340px){
+.welcome-container {
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 5%,                   /* ⬅︎ نُقدّم التدرج قليلاً */
+            rgba(230,249,255,0.07) 10%,
+            rgba(230,249,255,0.15) 18%,
+            rgba(215,246,236,0.3) 30%,
+            rgba(180,235,180,0.5) 50%,
+            rgba(168,227,144,0.75) 75%,
+            rgba(168,227,144,0.9) 90%,
+            rgba(168,227,144,1) 100%
+        ),
+        url('https://gisdune.github.io/khaledRS/image.jpg')
+        top center / contain no-repeat scroll !important;
     }
 }
 
