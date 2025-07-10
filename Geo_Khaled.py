@@ -68,10 +68,10 @@ except Exception as e:
 st.markdown("""
 <style>
 /* تنسيقات عامة للنصوص */
-* {
-    font-family: 'Arial', 'Tahoma', sans-serif !important;
-    text-align: right !important;
-    direction: rtl !important;
+/* 1) اجعل كل الصفحة RTL تلقائيًّا (بدون !important) */
+body {
+    direction: rtl;
+    text-align: right;
 }
 
 /* تنسيقات خاصة للعناوين */
@@ -566,33 +566,41 @@ h1, h2, h3 {
     }
 }
 
-/* —————— 1) عزل السلايدر عن RTL عام —————— */
-div[data-baseweb="slider"] {
-  direction: ltr !important;       /* اجعل اتجاهه LTR */
-  text-align: left !important;     /* محاذاته لليسار */
-  position: relative !important;   /* للتموضع الدقيق للـ ::after */
+/* —————— إجبار السلايدر على LTR بشكل فعّال —————— */
+/* ========== 1) اجعل الـ slider نفسه LTR بالكامل ========== */
+    [data-testid="stSlider"] {
+    direction: ltr !important;
+    unicode-bidi: isolate-override !important;
+    text-align: left !important;
 }
 
-/* —————— 2) إصلاح موضع الدائرة “thumb” —————— */
-div[data-baseweb="slider"] div[role="slider"] {
-  direction: ltr !important;       /* تأكد من أن الدائرة تتبع LTR */
+/* ========== 2) عزل BaseWeb track/thumb داخليًا ========== */
+[data-testid="stSlider"] div[data-baseweb="slider"] {
+    direction: ltr !important;
+    unicode-bidi: isolate-override !important;
+    position: relative !important;
 }
 
-/* —————— 3) إظهار القيمة الرقمية فوق thumb —————— */
-div[data-baseweb="slider"] div[role="slider"]::after {
-  content: attr(aria-valuenow);    /* الرقم الديناميكي */
-  position: absolute;
-  top: -25px;                       /* فوق السلايدر */
-  left: 50%;                       
-  transform: translateX(-50%);
-  background: #333;
-  color: #fff;
-  font-size: 12px;
-  padding: 3px 6px;
-  border-radius: 5px;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 10;
+/* ========== 3) Thumb (الدائرة) والرقم فوقها ========== */
+[data-testid="stSlider"] div[data-baseweb="slider"] div[role="slider"] {
+    direction: ltr !important;
+    unicode-bidi: isolate-override !important;
+    position: relative !important;
+}
+[data-testid="stSlider"] div[data-baseweb="slider"] div[role="slider"]::after {
+    content: attr(aria-valuenow);
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 16px;
+    border-radius: 5px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 10;
 }
 
 
