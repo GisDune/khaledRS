@@ -20,6 +20,12 @@ import arabic_reshaper
 from bidi.algorithm import get_display
 import matplotlib.font_manager as fm
 
+# ✅ تعديل: إضافة مكتبات للتعامل مع .env
+import os  # مكتبة لإدارة المتغيرات البيئية
+from dotenv import load_dotenv  # مكتبة لتحميل ملف .env
+load_dotenv()  # ✅ تعديل: تحميل المتغيرات من ملف .env
+
+
 # تحديد مسار الخط العربي
 arabic_font = fm.FontProperties(fname=r"C:\Users\zizo\Desktop\Js\New folder\ArefRuqaa-Regular.ttf")
 
@@ -51,10 +57,13 @@ def rerun_app():
 
 # ======== تهيئة Sentinel Hub ========
 try:
-    config = SHConfig()
-    config.instance_id = "6bc2eb2c-48bb-47ba-8f72-33a6b801039b"
-    config.sh_client_id = "6bc2eb2c-48bb-47ba-8f72-33a6b801039b"
-    config.sh_client_secret = "CwYVV7KtF6v4HFhKZgUOcgx0ExRrzJUz"
+   config = SHConfig()
+    
+    # ✅ تعديل: استخدام متغيرات البيئة بدلًا من القيم المكتوبة مباشرة
+    config.instance_id = os.getenv("INSTANCE_ID")  # ✅ تعديل
+    config.sh_client_id = os.getenv("SH_CLIENT_ID")  # ✅ تعديل
+    config.sh_client_secret = os.getenv("SH_CLIENT_SECRET")  # ✅ تعديل
+    
     
     if not all([config.instance_id, config.sh_client_id, config.sh_client_secret]):
         st.error("❌ بيانات اعتماد Sentinel Hub غير مكتملة!")
