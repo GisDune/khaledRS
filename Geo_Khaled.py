@@ -190,7 +190,7 @@ ul {
     height: 100vh !important;
     margin: 0 !important;
     padding: 0 !important;
-    background: url('https://raw.githubusercontent.com/GisDune/khaledRS/main/image.jpg') center/cover no-repeat !important;
+    background: url('https://github.com/GisDune/khaledRS/blob/main/image.jpg') center/cover no-repeat !important;
     background-attachment: fixed;        /* تأثير Parallax خفيف على الحواسيب */
     display: flex !important;
     flex-direction: column !important;
@@ -525,7 +525,7 @@ h1, h2, h3 {
 @media (max-width: 768px){
     .welcome-container{
         /* 1) ألغِ الخلفيّة السابقة كلّياً ثم عرِّفها من جديد */
-        background: url('https://raw.githubusercontent.com/GisDune/khaledRS/main/image.jpg')
+        background: url('https://github.com/GisDune/khaledRS/blob/main/image.jpg')
                     top center / contain              /* الحجم = contain */
                     no-repeat scroll !important;      /* لا قصّ ولا ثبات */
 
@@ -556,7 +556,7 @@ h1, h2, h3 {
             rgba(168,227,144,0.85) 90%,
             rgba(168,227,144,0.95) 100%
         ),
-        url('https://raw.githubusercontent.com/GisDune/khaledRS/main/image.jpg')
+        url('https://github.com/GisDune/khaledRS/blob/main/image.jpg')
         top center / contain no-repeat scroll !important;
 
         min-height: 100vh !important;
@@ -583,7 +583,7 @@ h1, h2, h3 {
             rgba(168,227,144,0.9) 90%,
             rgba(168,227,144,1) 100%
         ),
-        url('https://raw.githubusercontent.com/GisDune/khaledRS/main/image.jpg')
+        url('https://github.com/GisDune/khaledRS/blob/main/image.jpg')
         top center / contain no-repeat scroll !important;
     }
 }
