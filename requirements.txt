@@ -8,3 +8,5 @@ cmocean>=3.0
 sentinelhub>=3.11
 arabic-reshaper>=3.0
 python-bidi>=0.4
+python-dotenv
+
