@@ -57,18 +57,17 @@ def rerun_app():
 
 # ======== تهيئة Sentinel Hub ========
 try:
-   config = SHConfig()
-    
+    config = SHConfig()
+
     # ✅ تعديل: استخدام متغيرات البيئة بدلًا من القيم المكتوبة مباشرة
-    config.instance_id = os.getenv("INSTANCE_ID")  # ✅ تعديل
-    config.sh_client_id = os.getenv("SH_CLIENT_ID")  # ✅ تعديل
-    config.sh_client_secret = os.getenv("SH_CLIENT_SECRET")  # ✅ تعديل
-    
-    
+    config.instance_id = os.getenv("INSTANCE_ID")
+    config.sh_client_id = os.getenv("SH_CLIENT_ID")
+    config.sh_client_secret = os.getenv("SH_CLIENT_SECRET")
+
     if not all([config.instance_id, config.sh_client_id, config.sh_client_secret]):
         st.error("❌ بيانات اعتماد Sentinel Hub غير مكتملة!")
         st.stop()
-        
+
 except Exception as e:
     st.error(f"❌ خطأ في تهيئة الإعدادات: {str(e)}")
     st.stop()
@@ -190,8 +189,7 @@ ul {
     height: 100vh !important;
     margin: 0 !important;
     padding: 0 !important;
-    background: url('https://raw.githubusercontent.com/GisDune/Khaled/main/12.webp
-') center/cover no-repeat !important;
+    background: url('https://raw.githubusercontent.com/GisDune/Khaled/main/12.webp') center/cover no-repeat !important;
     background-attachment: fixed;        /* تأثير Parallax خفيف على الحواسيب */
     display: flex !important;
     flex-direction: column !important;
