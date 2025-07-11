@@ -189,7 +189,7 @@ ul {
     height: 100vh !important;
     margin: 0 !important;
     padding: 0 !important;
-    background: url('https://raw.githubusercontent.com/GisDune/khaledRS/refs/heads/main/19.jpg') center/cover no-repeat !important;
+    background: url('https://raw.githubusercontent.com/GisDune/khaledRS/refs/heads/main/e.webp') center/cover no-repeat !important;
     background-attachment: fixed;        /* تأثير Parallax خفيف على الحواسيب */
     display: flex !important;
     flex-direction: column !important;
