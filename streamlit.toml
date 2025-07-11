@@ -1,0 +1,3 @@
+[server]
+# يجعل Streamlit يخدم كل الملفات في جذر المشروع كـ static
+staticDir = "."
