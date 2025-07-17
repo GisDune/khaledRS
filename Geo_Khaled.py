@@ -26,8 +26,6 @@ from dotenv import load_dotenv  # مكتبة لتحميل ملف .env
 load_dotenv()  # ✅ تعديل: تحميل المتغيرات من ملف .env
 
 
-# تحديد مسار الخط العربي
-arabic_font = fm.FontProperties(fname=r"C:\Users\zizo\Desktop\Js\New folder\ArefRuqaa-Regular.ttf")
 
 def ar(text: str) -> str:
     """يعيد النص العربي مشكلاً ومرتباً RTL ليقبله matplotlib."""
