@@ -74,6 +74,15 @@ except Exception as e:
 st.markdown("""
 <style>
 
+/* 1. اجعل الـ Header الافتراضي لـ Streamlit شفافًا */
+[data-testid="stHeader"] {
+    background-color: rgba(255, 255, 255, 0.0) !important; /* شفافية كاملة */
+    /* يمكنك استخدام قيمة أقل من 1 لجعلها شبه شفافة، مثلاً:
+       background-color: rgba(255, 255, 255, 0.2) !important; */
+    border-bottom: none !important; /* إزالة أي حدود سفلية قد تظهر */
+    box-shadow: none !important; /* إزالة أي ظل قد يظهر */
+}
+
 /* تنسيقات عامة للنصوص */
 /* 1) اجعل كل الصفحة RTL تلقائيًّا (بدون !important) */
 body {
@@ -196,6 +205,8 @@ ul {
     align-items: center !important; /* توسيط أفقي */
     text-align: center !important; /* توسيط النص داخل الحاوية */
     box-sizing: border-box; /* التأكد من أن التبطين والحواف مشمولة في الحجم الكلي */
+    z-index: -1 !important; /* هذا هو المفتاح: اجعله يظهر خلف كل المحتوى الآخر، بما في ذلك الـ header */
+
 }
 .welcome-content {
     flex: 1;
@@ -207,6 +218,8 @@ ul {
     margin: 0 !important;
     box-sizing: border-box;
     width: 100%;                           /* يشغل العرض بالكامل */
+    z-index: 1 !important; /* هذا هو المفتاح: اجعله يظهر خلف كل المحتوى الآخر، بما في ذلك الـ header */
+
 }
 
 .st-emotion-cache-1kyxreq {
