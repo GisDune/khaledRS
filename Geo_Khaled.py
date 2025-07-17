@@ -73,6 +73,10 @@ except Exception as e:
 # ─────────────────────────ـ تطبيق CSS لتنسيق النصوص العربية وتصميم الشريط الجانبي ـ──────────────────────
 st.markdown("""
 <style>
+/* هذا الجزء لإخفاء الـ Header الافتراضي لـ Streamlit */
+[data-testid="stHeader"] {
+    display: none !important;
+}
 /* تنسيقات عامة للنصوص */
 /* 1) اجعل كل الصفحة RTL تلقائيًّا (بدون !important) */
 body {
