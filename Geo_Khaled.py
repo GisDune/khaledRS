@@ -205,7 +205,6 @@ ul {
     align-items: center !important; /* توسيط أفقي */
     text-align: center !important; /* توسيط النص داخل الحاوية */
     box-sizing: border-box; /* التأكد من أن التبطين والحواف مشمولة في الحجم الكلي */
-    z-index: -1 !important; /* هذا هو المفتاح: اجعله يظهر خلف كل المحتوى الآخر، بما في ذلك الـ header */
 
 }
 .welcome-content {
@@ -218,7 +217,6 @@ ul {
     margin: 0 !important;
     box-sizing: border-box;
     width: 100%;                           /* يشغل العرض بالكامل */
-    z-index: 1 !important; /* هذا هو المفتاح: اجعله يظهر خلف كل المحتوى الآخر، بما في ذلك الـ header */
 
 }
 
